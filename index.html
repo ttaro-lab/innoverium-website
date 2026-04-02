@@ -94,6 +94,8 @@ nav.scrolled { padding: 0.6rem 3rem; background: rgba(10, 15, 13, 0.95); }
   display: flex; align-items: center;
   position: relative; overflow: hidden;
   padding: 8rem 3rem 4rem;
+  justify-content: space-between;
+  gap: 3rem;
 }
 
 .hero-bg-grid {
@@ -121,6 +123,47 @@ nav.scrolled { padding: 0.6rem 3rem; background: rgba(10, 15, 13, 0.95); }
 @keyframes glowPulse { 0%, 100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.15); } }
 
 .hero-content { position: relative; z-index: 2; max-width: 800px; }
+
+.hero-media {
+  position: relative; z-index: 2;
+  width: clamp(700px, 45vw, 750px);
+  flex: 0 0 auto;
+}
+.hero-media-card {
+  border-radius: 24px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(46, 204, 113, 0.18);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  aspect-ratio: 4 / 3;
+}
+.hero-media-card img,
+.hero-media-card svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.hero-media-card img {
+  object-fit: cover;
+  opacity: 0.95;
+  transform: scale(1.02);
+}
+.hero-media-card svg {
+  display: none; /* 실사 이미지로 전환 */
+}
+.hero-media-card img {
+  display: block;
+}
+.hero-media-caption {
+  padding: 1rem 1.2rem;
+  font-family: var(--font-tech);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  background: rgba(0,0,0,0.15);
+}
 
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -261,6 +304,22 @@ section { padding: 6rem 3rem; }
 .solution-visual::before {
   content: ''; position: absolute; inset: 0;
   background: radial-gradient(circle at 30% 30%, rgba(46, 204, 113, 0.06) 0%, transparent 60%);
+  z-index: 1;
+}
+
+.solution-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.22;
+  filter: saturate(1.1) contrast(1.05);
+}
+
+svg.solution-bg-img {
+  display: none; /* 실사 이미지로 전환 */
 }
 
 .solution-name {
@@ -287,7 +346,7 @@ section { padding: 6rem 3rem; }
 /* Zone Diagram */
 .zone-diagram {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
-  position: relative; z-index: 1;
+  position: relative; z-index: 2;
 }
 .zone-card {
   background: rgba(0,0,0,0.4); border-radius: 12px; padding: 1.2rem;
@@ -518,6 +577,10 @@ footer {
 
   section { padding: 4rem 1.5rem; }
   .hero { padding: 7rem 1.5rem 3rem; }
+  .hero { flex-direction: column; align-items: flex-start; gap: 2rem; }
+  .hero-media { width: 100%; flex: 1 1 auto; }
+  .hero-media-card { border-radius: 18px; }
+  .hero-media-card { aspect-ratio: 16 / 12; }
   .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
   .hero-stat-num { font-size: 1.6rem; }
 
@@ -584,6 +647,114 @@ footer {
       </div>
     </div>
   </div>
+
+  <div class="hero-media reveal">
+    <div class="hero-media-card">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/5/5a/IFarm.fi_Vertical_farm_Finland.jpg"
+        alt="사람이 없는 미래지향적 스마트 수직농장 시설"
+        loading="lazy"
+      >
+      <svg
+        viewBox="0 0 440 330"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label="미래 배경의 ISO metric 에어로팜 도식 이미지"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <linearGradient id="isoBgG" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#0b3d2e" stop-opacity="0.95" />
+            <stop offset="1" stop-color="#0a0f0d" stop-opacity="0.98" />
+          </linearGradient>
+          <linearGradient id="isoMistG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#00bcd4" stop-opacity="0.18" />
+            <stop offset="1" stop-color="#00bcd4" stop-opacity="0" />
+          </linearGradient>
+          <linearGradient id="rackTopG" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#2ecc71" stop-opacity="0.35" />
+            <stop offset="1" stop-color="#00bcd4" stop-opacity="0.15" />
+          </linearGradient>
+          <filter id="isoGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- panel -->
+        <rect x="0" y="0" width="440" height="330" rx="24" fill="url(#isoBgG)" />
+        <rect x="18" y="18" width="404" height="294" rx="16" fill="#000" fill-opacity="0.12" stroke="#2ecc71" stroke-opacity="0.18" />
+
+        <!-- isometric floor -->
+        <g opacity="0.95">
+          <polygon points="220,258 304,214 220,170 136,214" fill="#082a1e" fill-opacity="0.35" stroke="#2ecc71" stroke-opacity="0.22" />
+          <polygon points="220,258 304,214 304,262 220,306" fill="#00bcd4" fill-opacity="0.06" stroke="#00bcd4" stroke-opacity="0.18" />
+          <polygon points="220,258 136,214 136,262 220,306" fill="#2ecc71" fill-opacity="0.06" stroke="#2ecc71" stroke-opacity="0.18" />
+          <path d="M136 214 L220 170 L304 214" stroke="#2ecc71" stroke-opacity="0.15" />
+        </g>
+
+        <!-- mist / spray -->
+        <g opacity="0.9" filter="url(#isoGlow)">
+          <path d="M200 90 C235 110, 235 140, 208 168" fill="none" stroke="#00bcd4" stroke-opacity="0.25" stroke-width="3" stroke-linecap="round" />
+          <path d="M240 96 C270 128, 264 152, 238 180" fill="none" stroke="#2ecc71" stroke-opacity="0.18" stroke-width="3" stroke-linecap="round" />
+          <path d="M160 92 C195 120, 190 146, 168 176" fill="none" stroke="#00bcd4" stroke-opacity="0.18" stroke-width="2" stroke-linecap="round" />
+        </g>
+        <rect x="0" y="0" width="440" height="330" fill="url(#isoMistG)" opacity="0.55" />
+
+        <!-- racks (isometric blocks) -->
+        <g>
+          <!-- rack 1 -->
+          <polygon points="160,202 206,175 252,202 206,230" fill="url(#rackTopG)" stroke="#00bcd4" stroke-opacity="0.12" />
+          <polygon points="160,202 160,252 206,280 206,230" fill="#0b3d2e" fill-opacity="0.35" stroke="#2ecc71" stroke-opacity="0.10" />
+          <polygon points="252,202 252,252 206,280 206,230" fill="#082a1e" fill-opacity="0.35" stroke="#00bcd4" stroke-opacity="0.10" />
+
+          <!-- rack 2 -->
+          <polygon points="206,230 252,202 298,230 252,258" fill="url(#rackTopG)" stroke="#00bcd4" stroke-opacity="0.12" />
+          <polygon points="206,230 206,280 252,308 252,258" fill="#0b3d2e" fill-opacity="0.35" stroke="#2ecc71" stroke-opacity="0.10" />
+          <polygon points="298,230 298,280 252,308 252,258" fill="#082a1e" fill-opacity="0.35" stroke="#00bcd4" stroke-opacity="0.10" />
+
+          <!-- plant ports -->
+          <g opacity="0.95">
+            <circle cx="206" cy="208" r="6" fill="#2ecc71" fill-opacity="0.6" />
+            <circle cx="182" cy="220" r="5" fill="#00bcd4" fill-opacity="0.45" />
+            <circle cx="230" cy="220" r="5" fill="#2ecc71" fill-opacity="0.45" />
+            <circle cx="252" cy="238" r="6" fill="#00bcd4" fill-opacity="0.45" />
+            <circle cx="228" cy="250" r="5" fill="#2ecc71" fill-opacity="0.42" />
+            <circle cx="276" cy="250" r="5" fill="#00bcd4" fill-opacity="0.34" />
+          </g>
+
+          <!-- mist nozzles -->
+          <g opacity="0.9">
+            <rect x="184" y="118" width="30" height="10" rx="5" fill="#00bcd4" fill-opacity="0.18" stroke="#00bcd4" stroke-opacity="0.35" />
+            <rect x="226" y="120" width="30" height="10" rx="5" fill="#2ecc71" fill-opacity="0.14" stroke="#2ecc71" stroke-opacity="0.30" />
+            <circle cx="200" cy="123" r="3" fill="#00bcd4" fill-opacity="0.7" />
+            <circle cx="240" cy="125" r="3" fill="#2ecc71" fill-opacity="0.6" />
+          </g>
+
+          <!-- control panels -->
+          <g opacity="0.95">
+            <rect x="120" y="186" width="44" height="26" rx="6" fill="#000" fill-opacity="0.25" stroke="#2ecc71" stroke-opacity="0.20" />
+            <rect x="136" y="196" width="12" height="6" rx="3" fill="#2ecc71" fill-opacity="0.55" />
+            <path d="M128 206 H150" stroke="#00bcd4" stroke-opacity="0.35" stroke-width="2" stroke-linecap="round" />
+
+            <rect x="274" y="190" width="46" height="28" rx="6" fill="#000" fill-opacity="0.25" stroke="#00bcd4" stroke-opacity="0.20" />
+            <rect x="292" y="202" width="12" height="6" rx="3" fill="#00bcd4" fill-opacity="0.55" />
+            <path d="M282 214 H306" stroke="#2ecc71" stroke-opacity="0.30" stroke-width="2" stroke-linecap="round" />
+          </g>
+        </g>
+
+        <!-- iso metric label -->
+        <g opacity="0.95">
+          <text x="44" y="56" font-family="monospace" font-size="12" fill="#8FA898" letter-spacing="2">ISO METRIC</text>
+          <text x="44" y="78" font-family="monospace" font-size="18" fill="#E8EDE9" font-weight="700">AERO FARM</text>
+        </g>
+      </svg>
+      <div class="hero-media-caption">SMART AERO VERTICAL FARM</div>
+    </div>
+  </div>
 </section>
 
 <!-- Problems -->
@@ -638,6 +809,76 @@ footer {
         </ul>
       </div>
       <div class="solution-visual">
+        <img
+          class="solution-bg-img"
+          src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=1600&q=80"
+          alt="스마트팜 모니터링 대시보드(실사)"
+          loading="lazy"
+        >
+        <svg
+          class="solution-bg-img"
+          viewBox="0 0 1000 650"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          focusable="false"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <linearGradient id="vcnsG" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#2ecc71" stop-opacity="0.35" />
+              <stop offset="1" stop-color="#00bcd4" stop-opacity="0.15" />
+            </linearGradient>
+          </defs>
+
+          <!-- grid -->
+          <g opacity="0.7" stroke="#2ecc71" stroke-opacity="0.25" stroke-width="2">
+            <path d="M70 120 H930" />
+            <path d="M70 200 H930" />
+            <path d="M70 280 H930" />
+            <path d="M70 360 H930" />
+            <path d="M70 440 H930" />
+            <path d="M170 80 V570" />
+            <path d="M290 80 V570" />
+            <path d="M410 80 V570" />
+            <path d="M530 80 V570" />
+            <path d="M650 80 V570" />
+            <path d="M770 80 V570" />
+            <path d="M890 80 V570" />
+          </g>
+
+          <!-- header glow -->
+          <rect x="70" y="70" width="860" height="100" rx="22" fill="url(#vcnsG)" stroke="#00bcd4" stroke-opacity="0.25" stroke-width="2" />
+
+          <!-- bars (demand/supply) -->
+          <g>
+            <rect x="120" y="410" width="60" height="130" rx="14" fill="#2ecc71" fill-opacity="0.7" />
+            <rect x="205" y="380" width="60" height="160" rx="14" fill="#00bcd4" fill-opacity="0.55" />
+            <rect x="290" y="340" width="60" height="200" rx="14" fill="#2ecc71" fill-opacity="0.55" />
+            <rect x="375" y="360" width="60" height="180" rx="14" fill="#00bcd4" fill-opacity="0.45" />
+            <rect x="460" y="300" width="60" height="240" rx="14" fill="#2ecc71" fill-opacity="0.45" />
+            <rect x="545" y="330" width="60" height="210" rx="14" fill="#00bcd4" fill-opacity="0.40" />
+            <rect x="630" y="380" width="60" height="160" rx="14" fill="#2ecc71" fill-opacity="0.40" />
+          </g>
+
+          <!-- matching nodes -->
+          <g fill="#E8EDE9" fill-opacity="0.95">
+            <circle cx="710" cy="250" r="10" />
+            <circle cx="800" cy="210" r="10" />
+            <circle cx="840" cy="290" r="10" />
+            <circle cx="740" cy="320" r="10" />
+            <circle cx="630" cy="300" r="10" />
+          </g>
+          <g fill="none" stroke="#00bcd4" stroke-opacity="0.55" stroke-width="3" stroke-linecap="round">
+            <path d="M710 250 L800 210 L840 290 L740 320 Z" />
+            <path d="M630 300 L710 250" />
+          </g>
+
+          <!-- flow arrow -->
+          <g fill="none" stroke="#2ecc71" stroke-opacity="0.65" stroke-width="4" stroke-linecap="round">
+            <path d="M120 170 C260 110, 340 110, 500 170 S760 250, 900 200" />
+            <path d="M875 185 L900 200 L875 215" />
+          </g>
+        </svg>
         <div class="vcns-flow">
           <div class="vcns-step">
             <div class="vcns-step-num">01</div>
@@ -673,6 +914,63 @@ footer {
         </ul>
       </div>
       <div class="solution-visual">
+        <img
+          class="solution-bg-img"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Click_%26_Grow_Smart_Garden_27.jpg/1280px-Click_%26_Grow_Smart_Garden_27.jpg"
+          alt="실내 수직 재배 스마트가든(실사)"
+          loading="lazy"
+        >
+        <svg
+          class="solution-bg-img"
+          viewBox="0 0 1000 650"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          focusable="false"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <linearGradient id="rackG" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2ecc71" stop-opacity="0.35" />
+              <stop offset="1" stop-color="#00bcd4" stop-opacity="0.12" />
+            </linearGradient>
+          </defs>
+
+          <!-- vertical rack silhouettes -->
+          <g opacity="0.95">
+            <rect x="110" y="90" width="90" height="470" rx="18" fill="url(#rackG)" />
+            <rect x="220" y="90" width="90" height="470" rx="18" fill="url(#rackG)" opacity="0.85"/>
+            <rect x="330" y="90" width="90" height="470" rx="18" fill="url(#rackG)" opacity="0.78"/>
+            <rect x="440" y="90" width="90" height="470" rx="18" fill="url(#rackG)" opacity="0.70"/>
+            <rect x="550" y="90" width="90" height="470" rx="18" fill="url(#rackG)" opacity="0.62"/>
+            <rect x="660" y="90" width="90" height="470" rx="18" fill="url(#rackG)" opacity="0.58"/>
+            <rect x="770" y="90" width="90" height="470" rx="18" fill="url(#rackG)" opacity="0.52"/>
+          </g>
+
+          <!-- shelves -->
+          <g opacity="0.7" stroke="#2ecc71" stroke-opacity="0.55" stroke-width="2">
+            <path d="M90 165 H910" />
+            <path d="M90 245 H910" />
+            <path d="M90 325 H910" />
+            <path d="M90 405 H910" />
+            <path d="M90 485 H910" />
+          </g>
+
+          <!-- sensor dots -->
+          <g>
+            <circle cx="155" cy="165" r="10" fill="#2ecc71" fill-opacity="0.55" />
+            <circle cx="265" cy="245" r="10" fill="#00bcd4" fill-opacity="0.45" />
+            <circle cx="375" cy="325" r="10" fill="#2ecc71" fill-opacity="0.45" />
+            <circle cx="485" cy="405" r="10" fill="#00bcd4" fill-opacity="0.35" />
+            <circle cx="595" cy="485" r="10" fill="#2ecc71" fill-opacity="0.40" />
+            <circle cx="705" cy="245" r="10" fill="#2ecc71" fill-opacity="0.38" />
+            <circle cx="815" cy="325" r="10" fill="#00bcd4" fill-opacity="0.32" />
+          </g>
+
+          <!-- data lines -->
+          <g fill="none" stroke="#00bcd4" stroke-opacity="0.4" stroke-width="2">
+            <path d="M90 525 C200 500, 320 560, 420 520 S640 480, 740 505 S860 520, 910 490" />
+          </g>
+        </svg>
         <div class="zone-diagram">
           <div class="zone-card">
             <div class="zone-emoji">🥬</div>
