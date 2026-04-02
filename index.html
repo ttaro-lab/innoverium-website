@@ -423,11 +423,11 @@ svg.solution-bg-img {
 /* ===== KPI / METRICS ===== */
 .metrics { background: var(--dark); }
 .metrics-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1.5rem; max-width: 1200px; margin: 0 auto;
 }
 .metric-card {
-  text-align: center; padding: 2.5rem 1.5rem;
+  text-align: center; padding: 2.6rem 0.9rem;
   background: var(--dark-card);
   border: 1px solid rgba(255,255,255,0.04);
   border-radius: 16px; transition: all 0.4s;
@@ -435,17 +435,17 @@ svg.solution-bg-img {
 }
 .metric-card::before {
   content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-  width: 60px; height: 3px; background: var(--gradient-accent); border-radius: 0 0 4px 4px;
+  width: 52px; height: 3px; background: var(--gradient-accent); border-radius: 0 0 4px 4px;
 }
 .metric-card:hover { transform: translateY(-4px); border-color: rgba(46, 204, 113, 0.2); }
 .metric-value {
   font-family: var(--font-tech);
-  font-size: 2.5rem; font-weight: 700;
+  font-size: 2.6rem; font-weight: 700;
   background: var(--gradient-accent);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.18rem;
 }
-.metric-label { font-size: 0.85rem; color: var(--text-dim); }
+.metric-label { font-size: 0.8rem; color: var(--text-dim); line-height: 1.45; }
 
 /* ===== ROADMAP ===== */
 .roadmap { background: linear-gradient(180deg, var(--dark) 0%, var(--green-deep) 100%); }
@@ -591,6 +591,9 @@ footer {
 
   .footer-content { flex-direction: column; }
   .footer-bottom { flex-direction: column; gap: 0.5rem; }
+
+  .metric-card { padding: 2.1rem 0.75rem; }
+  .metric-label { font-size: 0.8rem; }
 }
 </style>
 </head>
@@ -1068,27 +1071,27 @@ footer {
     <div class="metrics-grid">
       <div class="metric-card reveal">
         <div class="metric-value">≤15%</div>
-        <div class="metric-label">수요 예측 정확도<br>(MAPE 기준)</div>
+        <div class="metric-label">수요 예측 정확도 (MAPE 기준)</div>
       </div>
       <div class="metric-card reveal">
         <div class="metric-value">30%↓</div>
-        <div class="metric-label">과잉 생산<br>감소율</div>
+        <div class="metric-label">과잉 생산 감소율</div>
       </div>
       <div class="metric-card reveal">
         <div class="metric-value">40%↓</div>
-        <div class="metric-label">물 사용량<br>절감</div>
+        <div class="metric-label">물 사용량 절감</div>
       </div>
       <div class="metric-card reveal">
         <div class="metric-value">20%↑</div>
-        <div class="metric-label">에너지 효율<br>개선</div>
+        <div class="metric-label">에너지 효율 개선</div>
       </div>
       <div class="metric-card reveal">
         <div class="metric-value">48h</div>
-        <div class="metric-label">품목 전환<br>소요시간</div>
+        <div class="metric-label">품목 전환 소요시간</div>
       </div>
       <div class="metric-card reveal">
         <div class="metric-value">30%↑</div>
-        <div class="metric-label">농가 소득<br>향상</div>
+        <div class="metric-label">농가 소득 향상</div>
       </div>
     </div>
   </div>
