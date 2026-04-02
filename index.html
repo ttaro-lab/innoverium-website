@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이노베리움 | INNOVERIUM - AI 기반 그린바이오 스마트팜</title>
+<meta name="description" content="이노베리움은 AI 기반 수요-공급 최적 매칭과 다품종 스마트팜 기술로 그린바이오 산업의 미래를 열어갑니다.">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-deep: #0B3D2E;
+  --green-main: #1A6B4A;
+  --green-light: #2ECC71;
+  --green-pale: #E8F5E9;
+  --green-glow: #00E676;
+  --bio-warm: #F9A825;
+  --bio-orange: #FF6D00;
+  --dark: #0A0F0D;
+  --dark-card: #111A15;
+  --text-main: #E8EDE9;
+  --text-dim: #8FA898;
+  --text-bright: #FFFFFF;
+  --accent-blue: #00BCD4;
+  --gradient-hero: linear-gradient(135deg, #0B3D2E 0%, #0A2A1E 40%, #0D1F18 100%);
+  --gradient-accent: linear-gradient(135deg, var(--green-light), var(--accent-blue));
+  --font-display: 'Outfit', 'Noto Sans KR', sans-serif;
+  --font-body: 'Noto Sans KR', sans-serif;
+  --font-tech: 'Space Grotesk', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--dark);
+  color: var(--text-main);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 1rem 3rem;
+  background: rgba(10, 15, 13, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(46, 204, 113, 0.1);
+  display: flex; justify-content: space-between; align-items: center;
+  transition: all 0.4s;
+}
+nav.scrolled { padding: 0.6rem 3rem; background: rgba(10, 15, 13, 0.95); }
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem; font-weight: 800;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+}
+.nav-logo span { font-weight: 400; opacity: 0.7; font-size: 0.75rem; margin-left: 8px; letter-spacing: 2px; }
+
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a {
+  color: var(--text-dim); text-decoration: none; font-size: 0.9rem;
+  font-weight: 400; transition: color 0.3s; position: relative;
+}
+.nav-links a:hover { color: var(--green-light); }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+  background: var(--green-light); transition: width 0.3s;
+}
+.nav-links a:hover::after { width: 100%; }
+
+.nav-contact {
+  padding: 0.5rem 1.4rem; border: 1px solid var(--green-light);
+  border-radius: 100px; color: var(--green-light) !important;
+  font-weight: 500 !important; transition: all 0.3s !important;
+}
+.nav-contact:hover {
+  background: var(--green-light) !important;
+  color: var(--dark) !important;
+}
+.nav-contact::after { display: none !important; }
+
+.hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--text-main); transition: 0.3s; }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  background: var(--gradient-hero);
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  padding: 8rem 3rem 4rem;
+}
+
+.hero-bg-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(46, 204, 113, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46, 204, 113, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridMove 20s linear infinite;
+}
+@keyframes gridMove { to { transform: translate(60px, 60px); } }
+
+.hero-glow {
+  position: absolute; width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(46, 204, 113, 0.12) 0%, transparent 70%);
+  top: 10%; right: -10%;
+  animation: glowPulse 6s ease-in-out infinite;
+}
+.hero-glow-2 {
+  position: absolute; width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 188, 212, 0.08) 0%, transparent 70%);
+  bottom: 10%; left: 5%;
+  animation: glowPulse 8s ease-in-out infinite reverse;
+}
+@keyframes glowPulse { 0%, 100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.15); } }
+
+.hero-content { position: relative; z-index: 2; max-width: 800px; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 16px; border-radius: 100px;
+  background: rgba(46, 204, 113, 0.1); border: 1px solid rgba(46, 204, 113, 0.25);
+  font-size: 0.8rem; color: var(--green-light); font-weight: 500;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.8s ease-out;
+}
+.hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-glow); animation: blink 2s infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 800; line-height: 1.15;
+  color: var(--text-bright);
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 0.8s ease-out 0.15s both;
+}
+.hero h1 .highlight {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.hero-desc {
+  font-size: 1.15rem; color: var(--text-dim); line-height: 1.8;
+  max-width: 600px; margin-bottom: 2.5rem;
+  animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+.hero-buttons {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease-out 0.45s both;
+}
+
+.btn-primary {
+  padding: 0.85rem 2rem; border-radius: 100px; border: none;
+  background: var(--green-light); color: var(--dark);
+  font-size: 0.95rem; font-weight: 600; cursor: pointer;
+  font-family: var(--font-body);
+  transition: all 0.3s; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover { background: var(--green-glow); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(46, 204, 113, 0.3); }
+
+.btn-outline {
+  padding: 0.85rem 2rem; border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.2); background: transparent;
+  color: var(--text-main); font-size: 0.95rem; font-weight: 500;
+  cursor: pointer; font-family: var(--font-body);
+  transition: all 0.3s; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-outline:hover { border-color: var(--green-light); color: var(--green-light); }
+
+.hero-stats {
+  display: flex; gap: 3rem; margin-top: 4rem; padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+.hero-stat-num {
+  font-family: var(--font-tech);
+  font-size: 2.2rem; font-weight: 700; color: var(--green-light);
+}
+.hero-stat-label { font-size: 0.8rem; color: var(--text-dim); margin-top: 2px; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== SECTIONS COMMON ===== */
+section { padding: 6rem 3rem; }
+
+.section-label {
+  font-family: var(--font-tech); font-size: 0.75rem; letter-spacing: 3px;
+  color: var(--green-light); text-transform: uppercase; margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700; color: var(--text-bright);
+  margin-bottom: 1rem; line-height: 1.3;
+}
+
+.section-desc {
+  font-size: 1.05rem; color: var(--text-dim); max-width: 600px;
+  line-height: 1.8; margin-bottom: 3rem;
+}
+
+/* ===== PROBLEMS ===== */
+.problems { background: var(--dark); position: relative; }
+.problems-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem; max-width: 1200px; margin: 0 auto;
+}
+.problem-card {
+  background: var(--dark-card);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 16px; padding: 2rem;
+  transition: all 0.4s; position: relative; overflow: hidden;
+}
+.problem-card:hover {
+  border-color: rgba(249, 168, 37, 0.3);
+  transform: translateY(-4px);
+}
+.problem-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: rgba(249, 168, 37, 0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; margin-bottom: 1.2rem;
+}
+.problem-card h3 {
+  font-size: 1.1rem; font-weight: 600; color: var(--bio-warm);
+  margin-bottom: 0.8rem;
+}
+.problem-card p { font-size: 0.9rem; color: var(--text-dim); line-height: 1.7; }
+
+/* ===== SOLUTIONS ===== */
+.solutions { background: linear-gradient(180deg, var(--dark) 0%, var(--green-deep) 100%); }
+.solutions-container { max-width: 1200px; margin: 0 auto; }
+
+.solution-block {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+  align-items: center; margin-bottom: 5rem;
+}
+.solution-block:nth-child(even) { direction: rtl; }
+.solution-block:nth-child(even) > * { direction: ltr; }
+
+.solution-visual {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(46, 204, 113, 0.15);
+  border-radius: 20px; padding: 2.5rem;
+  position: relative; overflow: hidden;
+}
+.solution-visual::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(46, 204, 113, 0.06) 0%, transparent 60%);
+}
+
+.solution-name {
+  font-family: var(--font-tech);
+  font-size: 0.7rem; letter-spacing: 3px; color: var(--accent-blue);
+  margin-bottom: 0.8rem; text-transform: uppercase;
+}
+.solution-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem; font-weight: 700; color: var(--text-bright);
+  margin-bottom: 1rem;
+}
+.solution-desc { color: var(--text-dim); margin-bottom: 1.5rem; line-height: 1.8; }
+
+.solution-features { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+.solution-features li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 0.9rem; color: var(--text-main);
+}
+.solution-features li::before {
+  content: '▸'; color: var(--green-light); font-weight: 700; flex-shrink: 0; margin-top: 2px;
+}
+
+/* Zone Diagram */
+.zone-diagram {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+  position: relative; z-index: 1;
+}
+.zone-card {
+  background: rgba(0,0,0,0.4); border-radius: 12px; padding: 1.2rem;
+  border: 1px solid rgba(46, 204, 113, 0.15);
+  text-align: center; transition: all 0.3s;
+}
+.zone-card:hover { border-color: var(--green-light); transform: translateY(-3px); }
+.zone-label {
+  font-family: var(--font-tech); font-size: 0.65rem;
+  letter-spacing: 2px; color: var(--green-light); margin-bottom: 0.5rem;
+}
+.zone-temp { font-family: var(--font-tech); font-size: 1.3rem; color: var(--text-bright); font-weight: 600; }
+.zone-crops { font-size: 0.75rem; color: var(--text-dim); margin-top: 0.4rem; }
+.zone-emoji { font-size: 1.8rem; margin-bottom: 0.5rem; }
+
+/* VCNS Visual */
+.vcns-flow {
+  display: flex; flex-direction: column; gap: 1rem;
+  position: relative; z-index: 1;
+}
+.vcns-step {
+  display: flex; align-items: center; gap: 1rem;
+  background: rgba(0,0,0,0.3); border-radius: 10px;
+  padding: 1rem 1.2rem;
+  border-left: 3px solid var(--accent-blue);
+  transition: all 0.3s;
+}
+.vcns-step:hover { background: rgba(0, 188, 212, 0.08); }
+.vcns-step-num {
+  font-family: var(--font-tech); font-size: 0.7rem;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: rgba(0, 188, 212, 0.15); color: var(--accent-blue);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-weight: 600;
+}
+.vcns-step-text { font-size: 0.85rem; color: var(--text-main); }
+
+/* ===== TECHNOLOGY (Patent) ===== */
+.technology { background: var(--green-deep); position: relative; }
+.tech-container { max-width: 1100px; margin: 0 auto; }
+
+.tech-card {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(46, 204, 113, 0.12);
+  border-radius: 20px; padding: 3rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+}
+
+.tech-info h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 700; color: var(--text-bright);
+  margin-bottom: 0.5rem;
+}
+.tech-patent {
+  font-family: var(--font-tech); font-size: 0.8rem;
+  color: var(--accent-blue); margin-bottom: 1.5rem;
+}
+.tech-desc { color: var(--text-dim); line-height: 1.8; margin-bottom: 1.5rem; }
+
+.tech-specs { display: flex; flex-direction: column; gap: 1rem; }
+.tech-spec {
+  display: flex; align-items: center; gap: 12px;
+  padding: 0.8rem 1rem; background: rgba(0,0,0,0.3);
+  border-radius: 10px; border: 1px solid rgba(46, 204, 113, 0.08);
+}
+.tech-spec-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: rgba(46, 204, 113, 0.1);
+  display: flex; align-items: center; justify-content: center; font-size: 1rem;
+}
+.tech-spec-label { font-size: 0.8rem; color: var(--text-dim); }
+.tech-spec-value { font-size: 0.95rem; color: var(--text-bright); font-weight: 500; }
+
+/* ===== KPI / METRICS ===== */
+.metrics { background: var(--dark); }
+.metrics-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem; max-width: 1200px; margin: 0 auto;
+}
+.metric-card {
+  text-align: center; padding: 2.5rem 1.5rem;
+  background: var(--dark-card);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 16px; transition: all 0.4s;
+  position: relative; overflow: hidden;
+}
+.metric-card::before {
+  content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 60px; height: 3px; background: var(--gradient-accent); border-radius: 0 0 4px 4px;
+}
+.metric-card:hover { transform: translateY(-4px); border-color: rgba(46, 204, 113, 0.2); }
+.metric-value {
+  font-family: var(--font-tech);
+  font-size: 2.5rem; font-weight: 700;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 0.3rem;
+}
+.metric-label { font-size: 0.85rem; color: var(--text-dim); }
+
+/* ===== ROADMAP ===== */
+.roadmap { background: linear-gradient(180deg, var(--dark) 0%, var(--green-deep) 100%); }
+.roadmap-container { max-width: 900px; margin: 0 auto; }
+
+.roadmap-timeline { position: relative; padding-left: 3rem; }
+.roadmap-timeline::before {
+  content: ''; position: absolute; left: 14px; top: 0; bottom: 0;
+  width: 2px; background: linear-gradient(180deg, var(--green-light), var(--accent-blue));
+}
+
+.roadmap-item {
+  position: relative; margin-bottom: 3rem;
+  padding: 1.5rem 2rem;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(46, 204, 113, 0.1);
+  border-radius: 14px;
+  transition: all 0.3s;
+}
+.roadmap-item:hover { border-color: rgba(46, 204, 113, 0.3); transform: translateX(4px); }
+.roadmap-item::before {
+  content: ''; position: absolute;
+  left: -2.35rem; top: 1.8rem;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--green-light);
+  border: 3px solid var(--dark);
+}
+
+.roadmap-year {
+  font-family: var(--font-tech); font-size: 0.75rem;
+  color: var(--green-light); letter-spacing: 2px; margin-bottom: 0.5rem;
+}
+.roadmap-title { font-size: 1.15rem; font-weight: 600; color: var(--text-bright); margin-bottom: 0.5rem; }
+.roadmap-desc { font-size: 0.9rem; color: var(--text-dim); line-height: 1.7; }
+.roadmap-revenue {
+  display: inline-block; margin-top: 0.8rem;
+  padding: 4px 14px; border-radius: 100px;
+  background: rgba(46, 204, 113, 0.1);
+  font-family: var(--font-tech); font-size: 0.8rem;
+  color: var(--green-light);
+}
+
+/* ===== TEAM ===== */
+.team { background: var(--green-deep); }
+.team-container { max-width: 1000px; margin: 0 auto; }
+
+.team-highlights {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+.team-card {
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px; padding: 2rem; text-align: center;
+  transition: all 0.3s;
+}
+.team-card:hover { border-color: rgba(46, 204, 113, 0.2); transform: translateY(-3px); }
+.team-card-icon { font-size: 2.4rem; margin-bottom: 1rem; }
+.team-card h3 { font-size: 1rem; font-weight: 600; color: var(--text-bright); margin-bottom: 0.5rem; }
+.team-card p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.6; }
+
+/* ===== CTA ===== */
+.cta {
+  background: var(--dark);
+  text-align: center;
+  padding: 6rem 3rem;
+  position: relative; overflow: hidden;
+}
+.cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(46, 204, 113, 0.08) 0%, transparent 65%);
+}
+.cta-content { position: relative; z-index: 2; }
+.cta h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700; color: var(--text-bright);
+  margin-bottom: 1rem;
+}
+.cta p { font-size: 1.05rem; color: var(--text-dim); margin-bottom: 2.5rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: rgba(0,0,0,0.5);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 3rem;
+}
+.footer-content {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  flex-wrap: wrap; gap: 2rem;
+}
+.footer-brand { max-width: 350px; }
+.footer-brand .nav-logo { display: inline-block; margin-bottom: 1rem; }
+.footer-brand p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.7; }
+
+.footer-info { display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-info h4 { font-size: 0.85rem; font-weight: 600; color: var(--text-bright); margin-bottom: 0.3rem; }
+.footer-info p, .footer-info a {
+  font-size: 0.8rem; color: var(--text-dim); text-decoration: none; transition: color 0.3s;
+}
+.footer-info a:hover { color: var(--green-light); }
+
+.footer-bottom {
+  max-width: 1200px; margin: 2rem auto 0;
+  padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex; justify-content: space-between;
+  font-size: 0.75rem; color: var(--text-dim);
+}
+
+/* ===== SCROLL ANIMATION ===== */
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  nav { padding: 0.8rem 1.5rem; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .nav-links.open {
+    display: flex; flex-direction: column;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: rgba(10, 15, 13, 0.98); padding: 2rem;
+    gap: 1.2rem; border-bottom: 1px solid rgba(46, 204, 113, 0.1);
+  }
+
+  section { padding: 4rem 1.5rem; }
+  .hero { padding: 7rem 1.5rem 3rem; }
+  .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+  .hero-stat-num { font-size: 1.6rem; }
+
+  .solution-block, .tech-card { grid-template-columns: 1fr; gap: 2rem; }
+  .solution-block:nth-child(even) { direction: ltr; }
+
+  .zone-diagram { grid-template-columns: 1fr; }
+
+  .footer-content { flex-direction: column; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <div class="nav-logo">INNOVERIUM<span>이노베리움</span></div>
+  <div class="nav-links" id="navLinks">
+    <a href="#problems">문제인식</a>
+    <a href="#solutions">솔루션</a>
+    <a href="#technology">핵심기술</a>
+    <a href="#metrics">성과지표</a>
+    <a href="#roadmap">로드맵</a>
+    <a href="#contact" class="nav-contact">문의하기</a>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span> AI × GreenBio Smart Farm</div>
+    <h1>시장이 원하는 것을<br><span class="highlight">정확히 키워냅니다</span></h1>
+    <p class="hero-desc">
+      이노베리움은 AI 기반 수요 예측과 다품종 정밀환경 제어 기술로,
+      과잉 생산 없는 그린바이오 스마트팜 생태계를 만들어갑니다.
+    </p>
+    <div class="hero-buttons">
+      <a href="#solutions" class="btn-primary">솔루션 알아보기 →</a>
+      <a href="#contact" class="btn-outline">파트너십 문의</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">40%↓</div>
+        <div class="hero-stat-label">물 사용량 절감</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">30%↑</div>
+        <div class="hero-stat-label">생육 속도 향상</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">3×</div>
+        <div class="hero-stat-label">면적당 생산성</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">17모작</div>
+        <div class="hero-stat-label">연간 수확 횟수</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Problems -->
+<section class="problems" id="problems">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div class="section-label reveal">PROBLEM</div>
+    <div class="section-title reveal">현재 스마트팜이 직면한 문제</div>
+    <div class="section-desc reveal">K-스마트팜 산업은 양적 성장을 이뤘지만, 구조적 문제가 남아있습니다.</div>
+    <div class="problems-grid">
+      <div class="problem-card reveal">
+        <div class="problem-icon">📉</div>
+        <h3>과잉공급 &amp; 가격폭락</h3>
+        <p>딸기·토마토·파프리카 등 소수 품목에 집중되어 동일 품목의 생산량 폭증에 따른 가격 폭락 우려가 존재합니다.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">💸</div>
+        <h3>높은 초기비용</h3>
+        <p>비닐하우스 기반 스마트팜도 20~30억 원의 초기비용이 소요되며, 에너지 가격 상승이 경제성을 제약합니다.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">🌾</div>
+        <h3>영세농가 위협</h3>
+        <p>수급조절·가격 보장 없는 집적화는 관행 농가의 입지를 위태롭게 하며, 대기업 자본 진출 우려도 제기됩니다.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">🤖</div>
+        <h3>AI 활용 기반 부재</h3>
+        <p>파프리카를 제외하면 국산 품목의 체계화된 생육 데이터가 부족하여 AI 기반 고도화를 위한 기반이 미흡합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Solutions -->
+<section class="solutions" id="solutions">
+  <div class="solutions-container">
+    <div class="section-label reveal">SOLUTION</div>
+    <div class="section-title reveal">두 개의 엔진, 하나의 플랫폼</div>
+    <div class="section-desc reveal">수요 예측 AI와 정밀 환경제어 스마트팜이 실시간 연동되는 수요 반응형 지능 생산 시스템</div>
+
+    <!-- VCNS-FARM -->
+    <div class="solution-block reveal">
+      <div>
+        <div class="solution-name">VCNS-FARM</div>
+        <div class="solution-title">AI 지능형 수요 예측 엔진</div>
+        <div class="solution-desc">공급 가능 물량과 수요처 수량을 매칭하여 최적의 생산 체계를 제시하는 AI 소프트웨어 솔루션입니다.</div>
+        <ul class="solution-features">
+          <li>수요 예측 엔진 (Transformer + LSTM 하이브리드)</li>
+          <li>생산능력 분석 (CNN + 생육정보 통합 예측)</li>
+          <li>AI 최적 매칭 엔진 (GNN + NSGA-II 강화학습)</li>
+          <li>디지털 트윈 시뮬레이션 기반 사전 검증</li>
+        </ul>
+      </div>
+      <div class="solution-visual">
+        <div class="vcns-flow">
+          <div class="vcns-step">
+            <div class="vcns-step-num">01</div>
+            <div class="vcns-step-text">수요처 기능성 제품 수요 요청</div>
+          </div>
+          <div class="vcns-step">
+            <div class="vcns-step-num">02</div>
+            <div class="vcns-step-text">AI 수요 예측 → 스마트팜 생산 계획 수립</div>
+          </div>
+          <div class="vcns-step">
+            <div class="vcns-step-num">03</div>
+            <div class="vcns-step-text">디지털 트윈 기반 생산능력 분석</div>
+          </div>
+          <div class="vcns-step">
+            <div class="vcns-step-num">04</div>
+            <div class="vcns-step-text">Supply-Demand 최적 매칭 실행</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOAI-FARM -->
+    <div class="solution-block reveal">
+      <div>
+        <div class="solution-name">MOAI-FARM</div>
+        <div class="solution-title">다품종 정밀환경 그린바이오팜</div>
+        <div class="solution-desc">독립 환경 존(Zone) 기반으로 다품종을 동시 재배하며, AI 수요 예측과 실시간 연동되는 하드웨어 플랫폼입니다.</div>
+        <ul class="solution-features">
+          <li>3개 독립 환경 Zone (엽채류·과채류·허브/약용)</li>
+          <li>존별 독립 온도·습도·광·CO₂ 제어</li>
+          <li>AI 양액-모니터링 통합 (EC·pH·DO 실시간)</li>
+          <li>수직 다단 랙 구조 — 면적당 생산성 최대 3배</li>
+        </ul>
+      </div>
+      <div class="solution-visual">
+        <div class="zone-diagram">
+          <div class="zone-card">
+            <div class="zone-emoji">🥬</div>
+            <div class="zone-label">ZONE A · 엽채류</div>
+            <div class="zone-temp">18~22°C</div>
+            <div class="zone-crops">상추 · 케일 · 청경채</div>
+            <div class="zone-crops" style="color: var(--green-light); margin-top: 6px; font-family: var(--font-tech);">8~12단 · 연17모작</div>
+          </div>
+          <div class="zone-card">
+            <div class="zone-emoji">🍓</div>
+            <div class="zone-label">ZONE B · 과채류</div>
+            <div class="zone-temp">22~28°C</div>
+            <div class="zone-crops">딸기 · 토마토 · 파프리카</div>
+            <div class="zone-crops" style="color: var(--green-light); margin-top: 6px; font-family: var(--font-tech);">4~6단 · 풀스펙트럼</div>
+          </div>
+          <div class="zone-card">
+            <div class="zone-emoji">🌿</div>
+            <div class="zone-label">ZONE C · 허브·약용</div>
+            <div class="zone-temp">20~25°C</div>
+            <div class="zone-crops">바질 · 민트 · 로즈마리</div>
+            <div class="zone-crops" style="color: var(--green-light); margin-top: 6px; font-family: var(--font-tech);">6~10단 · UV-A 처리</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Technology -->
+<section class="technology" id="technology">
+  <div class="tech-container">
+    <div class="section-label reveal">CORE TECHNOLOGY</div>
+    <div class="section-title reveal">특허 기반 핵심기술</div>
+    <div class="section-desc reveal">한국전자기술연구원의 검증된 특허 기술을 이전받아, 다품종 정밀 환경제어에 최적화합니다.</div>
+    <div class="tech-card reveal">
+      <div class="tech-info">
+        <h3>열전달 특성이 반영된<br>균일난방 제어 장치 및 방법</h3>
+        <div class="tech-patent">특허 제10-2407262호 · 한국전자기술연구원</div>
+        <div class="tech-desc">
+          열전달 계수(자연대류 및 강제대류)를 고려한 난방 제어로, 
+          재배시설 내 균일 난방을 구현합니다. 온도 변동 편차를 최소화하여 
+          작물 병해충을 사전 방지하고 에너지 효율을 극대화합니다.
+        </div>
+        <div class="tech-desc" style="font-size: 0.85rem;">
+          고령군 그린바이오 수직농장에서 실증 테스트 진행 중
+        </div>
+      </div>
+      <div class="tech-specs">
+        <div class="tech-spec">
+          <div class="tech-spec-icon">🌡️</div>
+          <div>
+            <div class="tech-spec-label">온도 편차 제어</div>
+            <div class="tech-spec-value">±0.3~0.5°C 정밀 유지</div>
+          </div>
+        </div>
+        <div class="tech-spec">
+          <div class="tech-spec-icon">🔄</div>
+          <div>
+            <div class="tech-spec-label">열전달 모델링</div>
+            <div class="tech-spec-value">자연대류 + 강제대류 통합</div>
+          </div>
+        </div>
+        <div class="tech-spec">
+          <div class="tech-spec-icon">📐</div>
+          <div>
+            <div class="tech-spec-label">파이프 최적화</div>
+            <div class="tech-spec-value">구역별 배치·수온 자동 제어</div>
+          </div>
+        </div>
+        <div class="tech-spec">
+          <div class="tech-spec-icon">🛡️</div>
+          <div>
+            <div class="tech-spec-label">병해충 예방</div>
+            <div class="tech-spec-value">온도 기반 사전 차단</div>
+          </div>
+        </div>
+        <div class="tech-spec">
+          <div class="tech-spec-icon">⚡</div>
+          <div>
+            <div class="tech-spec-label">에너지 효율</div>
+            <div class="tech-spec-value">kWh/kg 생산량 20% 개선</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Metrics -->
+<section class="metrics" id="metrics">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div class="section-label reveal" style="text-align:center;">PERFORMANCE</div>
+    <div class="section-title reveal" style="text-align:center;">목표 성과 지표</div>
+    <div class="section-desc reveal" style="text-align:center; margin: 0 auto 3rem;">데이터 기반의 정량적 성과 목표를 설정하고 달성해 나갑니다.</div>
+    <div class="metrics-grid">
+      <div class="metric-card reveal">
+        <div class="metric-value">≤15%</div>
+        <div class="metric-label">수요 예측 정확도<br>(MAPE 기준)</div>
+      </div>
+      <div class="metric-card reveal">
+        <div class="metric-value">30%↓</div>
+        <div class="metric-label">과잉 생산<br>감소율</div>
+      </div>
+      <div class="metric-card reveal">
+        <div class="metric-value">40%↓</div>
+        <div class="metric-label">물 사용량<br>절감</div>
+      </div>
+      <div class="metric-card reveal">
+        <div class="metric-value">20%↑</div>
+        <div class="metric-label">에너지 효율<br>개선</div>
+      </div>
+      <div class="metric-card reveal">
+        <div class="metric-value">48h</div>
+        <div class="metric-label">품목 전환<br>소요시간</div>
+      </div>
+      <div class="metric-card reveal">
+        <div class="metric-value">30%↑</div>
+        <div class="metric-label">농가 소득<br>향상</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Roadmap -->
+<section class="roadmap" id="roadmap">
+  <div class="roadmap-container">
+    <div class="section-label reveal">ROADMAP</div>
+    <div class="section-title reveal">상용화 로드맵</div>
+    <div class="section-desc reveal">기술 내재화부터 글로벌 시장 진출까지, 단계적으로 성장합니다.</div>
+    <div class="roadmap-timeline">
+      <div class="roadmap-item reveal">
+        <div class="roadmap-year">2026 H1</div>
+        <div class="roadmap-title">기술 내재화 &amp; 제품화 개발</div>
+        <div class="roadmap-desc">특허 기술 교육 및 노하우 이전, MOAI-FARM 설계 검토 및 프로토타입 개발</div>
+      </div>
+      <div class="roadmap-item reveal">
+        <div class="roadmap-year">2026 H2</div>
+        <div class="roadmap-title">실증 테스트</div>
+        <div class="roadmap-desc">고령군 그린바이오 수직농장 기반 실증, 시험성적서 확보 및 시스템 안정화</div>
+      </div>
+      <div class="roadmap-item reveal">
+        <div class="roadmap-year">2027 Q2</div>
+        <div class="roadmap-title">공식 상용화 출시</div>
+        <div class="roadmap-desc">MOAI-FARM + VCNS-FARM 정식 런칭, B2B 원물 공급 계약 체결</div>
+        <div class="roadmap-revenue">목표 매출 35억 원</div>
+      </div>
+      <div class="roadmap-item reveal">
+        <div class="roadmap-year">2028</div>
+        <div class="roadmap-title">K-스마트팜 패키지 B2B 개시</div>
+        <div class="roadmap-desc">하드웨어 + AI 수급 최적화 솔루션 패키지 납품, 전국 혁신밸리 확산</div>
+        <div class="roadmap-revenue">목표 매출 65억 원</div>
+      </div>
+      <div class="roadmap-item reveal">
+        <div class="roadmap-year">2029</div>
+        <div class="roadmap-title">SaaS 모델 &amp; 글로벌 진출</div>
+        <div class="roadmap-desc">VCNS-FARM SaaS 적용 확대, K-스마트팜 패키지 수출 모델 개발</div>
+        <div class="roadmap-revenue">목표 매출 105억 원</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team -->
+<section class="team" id="team">
+  <div class="team-container">
+    <div class="section-label reveal" style="text-align:center;">CAPABILITIES</div>
+    <div class="section-title reveal" style="text-align:center;">핵심 역량</div>
+    <div class="section-desc reveal" style="text-align:center; margin: 0 auto 3rem;">정부 R&amp;D 프로젝트 수행 경험과 AI·바이오 융합 기술력을 보유하고 있습니다.</div>
+    <div class="team-highlights">
+      <div class="team-card reveal">
+        <div class="team-card-icon">🔬</div>
+        <h3>R&amp;D 역량</h3>
+        <p>박사 1명, 석사 2명 포함 연구인력 4명 · 기술개발실 운영</p>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-card-icon">📋</div>
+        <h3>사업 실적</h3>
+        <p>스마트팜 빅데이터 ISP, 그린바이오 시설 기획 등 10억+ 프로젝트 수행</p>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-card-icon">🤝</div>
+        <h3>기술이전 네트워크</h3>
+        <p>KISTI VCNS 시스템 기술이전 경험, 한국전자기술연구원 협력</p>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-card-icon">🌱</div>
+        <h3>산업 전문성</h3>
+        <p>그린바이오 밸류체인 전주기 기업 분석 및 데이터 가공 역량</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta-content">
+    <h2 class="reveal">함께 성장할 파트너를<br>찾고 있습니다</h2>
+    <p class="reveal">원물 제조업체, 스마트팜 농가, 지자체, 투자사 등<br>그린바이오 생태계의 모든 파트너와의 협력을 환영합니다.</p>
+    <div class="reveal">
+      <a href="mailto:hjina0428@hanmail.net" class="btn-primary" style="margin-right: 1rem;">이메일 문의 →</a>
+      <a href="tel:010-2615-5871" class="btn-outline">전화 문의</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <div class="nav-logo">INNOVERIUM</div>
+      <p>바이오 산업의 지능화된 유통체계 확립을 위해 설립된 AI 그린바이오 스마트팜 전문기업</p>
+    </div>
+    <div class="footer-info">
+      <h4>기업 정보</h4>
+      <p>이노베리움 주식회사</p>
+      <p>대표이사 한진아</p>
+      <p>사업자등록번호 416-88-03156</p>
+    </div>
+    <div class="footer-info">
+      <h4>소재지</h4>
+      <p>대전광역시 유성구 은구비남로<br>33번길 13-8, 304호</p>
+    </div>
+    <div class="footer-info">
+      <h4>연락처</h4>
+      <a href="mailto:hjina0428@hanmail.net">hjina0428@hanmail.net</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 INNOVERIUM Inc. All rights reserved.</span>
+    <span>전문 과학 및 기술서비스업 · 스마트팜 시스템 개발</span>
+  </div>
+</footer>
+
+<script>
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Mobile nav toggle
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('navLinks').classList.remove('open');
+    }
+  });
+});
+</script>
+</body>
+</html>
