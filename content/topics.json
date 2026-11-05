@@ -18,6 +18,14 @@
    "post": null
   },
   {
+   "id": "s01",
+   "type": "define",
+   "question": "스마트 농업과 스마트팜은 어떻게 다른가요?",
+   "area": "스마트 농업",
+   "status": "pending",
+   "post": null
+  },
+  {
    "id": "t03",
    "type": "howto",
    "question": "지자체가 신규 R&D 사업을 기획할 때 어떤 순서로 진행하나요?",
@@ -38,6 +46,14 @@
    "type": "trend",
    "question": "이번 주 정부 R&D·산업 정책에서 지자체 담당자가 알아야 할 것은 무엇인가요?",
    "area": "동향",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "s02",
+   "type": "howto",
+   "question": "공공 연구기관의 특허를 기술이전받으려면 어떤 절차를 거치나요?",
+   "area": "스마트 농업",
    "status": "pending",
    "post": null
   },
@@ -66,6 +82,14 @@
    "post": null
   },
   {
+   "id": "s03",
+   "type": "guide",
+   "question": "스마트 농업 기술을 기술이전받은 뒤 연구개발은 어떻게 준비하나요?",
+   "area": "스마트 농업",
+   "status": "pending",
+   "post": null
+  },
+  {
    "id": "t09",
    "type": "define",
    "question": "다품종 정밀환경 스마트팜은 일반 스마트팜과 무엇이 다른가요?",
@@ -86,6 +110,14 @@
    "type": "howto",
    "question": "R&D 사업 성과관리 체계는 어떻게 다시 세우나요?",
    "area": "정책·R&D 기획",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "s04",
+   "type": "trend",
+   "question": "올해 스마트 농업 육성 정책과 지원사업은 무엇이 바뀌었나요?",
+   "area": "동향",
    "status": "pending",
    "post": null
   },
