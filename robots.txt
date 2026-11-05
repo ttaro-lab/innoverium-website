@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://innoverium.com/sitemap.xml
+Sitemap: https://www.innoverium.com/sitemap.xml
