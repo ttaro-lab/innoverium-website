@@ -1,0 +1,421 @@
+{
+ "note": "매주 status가 pending인 첫 주제를 씁니다. 다 쓰면 done과 post(slug)를 채웁니다.",
+ "topics": [
+  {
+   "id": "t01",
+   "type": "brand",
+   "question": "이노베리움은 어떤 회사인가요?",
+   "area": "회사",
+   "status": "done",
+   "post": "innoverium-company"
+  },
+  {
+   "id": "t02",
+   "type": "define",
+   "question": "예비타당성조사 사전기획이란 무엇인가요?",
+   "area": "정책·R&D 기획",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t03",
+   "type": "howto",
+   "question": "지자체가 신규 R&D 사업을 기획할 때 어떤 순서로 진행하나요?",
+   "area": "정책·R&D 기획",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t04",
+   "type": "define",
+   "question": "그린바이오 산업이란 무엇이고 어디까지 포함되나요?",
+   "area": "그린바이오",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t05",
+   "type": "trend",
+   "question": "이번 주 정부 R&D·산업 정책에서 지자체 담당자가 알아야 할 것은 무엇인가요?",
+   "area": "동향",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t06",
+   "type": "guide",
+   "question": "사전타당성 조사 용역을 맡기기 전에 무엇을 준비해야 하나요?",
+   "area": "산업 컨설팅",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t07",
+   "type": "define",
+   "question": "핵심 특허 확보 전략(IP-R&D)이란 무엇인가요?",
+   "area": "기술·특허 분석",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t08",
+   "type": "howto",
+   "question": "산업 입지분석은 어떤 기준으로 하나요?",
+   "area": "산업 컨설팅",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t09",
+   "type": "define",
+   "question": "다품종 정밀환경 스마트팜은 일반 스마트팜과 무엇이 다른가요?",
+   "area": "스마트팜",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t10",
+   "type": "case",
+   "question": "산림 분야 신규 R&D 사업 기획은 어떻게 진행됐나요?",
+   "area": "산림·수목원 R&D",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t11",
+   "type": "howto",
+   "question": "R&D 사업 성과관리 체계는 어떻게 다시 세우나요?",
+   "area": "정책·R&D 기획",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t12",
+   "type": "define",
+   "question": "바이오 항공유(SAF)란 무엇이고 국내 기술 수준은 어떤가요?",
+   "area": "에너지",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t13",
+   "type": "trend",
+   "question": "이번 달 그린바이오·스마트팜 정책과 지원사업은 무엇이 나왔나요?",
+   "area": "동향",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t14",
+   "type": "guide",
+   "question": "투자 네트워킹 데이를 기획할 때 무엇을 챙겨야 하나요?",
+   "area": "네트워킹·투자연계",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t15",
+   "type": "define",
+   "question": "피지컬 AI란 무엇인가요?",
+   "area": "데이터·AI",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t16",
+   "type": "howto",
+   "question": "기업 수요조사 설문은 어떻게 설계하나요?",
+   "area": "산업 컨설팅",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t17",
+   "type": "define",
+   "question": "효과성 분석과 성과분석은 어떻게 다른가요?",
+   "area": "정책·R&D 기획",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t18",
+   "type": "case",
+   "question": "우주산업 투자진흥지구 입지분석에서는 무엇을 봤나요?",
+   "area": "산업 컨설팅",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t19",
+   "type": "howto",
+   "question": "스마트팜에서 AI 수요 예측은 어떻게 생산 계획으로 이어지나요?",
+   "area": "스마트팜",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t20",
+   "type": "define",
+   "question": "기술사업화 실증 지원 사업이란 무엇인가요?",
+   "area": "기술사업화",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t21",
+   "type": "trend",
+   "question": "이번 분기 산림·탄소중립 분야 R&D 정책 변화는 무엇인가요?",
+   "area": "동향",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t22",
+   "type": "guide",
+   "question": "지역 데이터 산업 육성 전략에는 무엇이 들어가야 하나요?",
+   "area": "데이터·AI",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t23",
+   "type": "define",
+   "question": "TRM(기술로드맵)이란 무엇이고 어떻게 활용하나요?",
+   "area": "정책·R&D 기획",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t24",
+   "type": "howto",
+   "question": "특허 동향 분석 보고서는 어떤 순서로 만드나요?",
+   "area": "기술·특허 분석",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t25",
+   "type": "define",
+   "question": "그린바이오 소재는 식품·화장품에 어떻게 쓰이나요?",
+   "area": "그린바이오",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t26",
+   "type": "case",
+   "question": "수소 관련 기관 설립 사전타당성 검토에서는 무엇을 따지나요?",
+   "area": "에너지",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t27",
+   "type": "guide",
+   "question": "정부 R&D 신규사업 기획보고서에서 자주 지적받는 부분은 무엇인가요?",
+   "area": "정책·R&D 기획",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t28",
+   "type": "define",
+   "question": "소비자 Deep Dive 워크숍이란 무엇인가요?",
+   "area": "네트워킹·투자연계",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t29",
+   "type": "trend",
+   "question": "새해 정부 R&D 예산에서 지역 기관이 주목할 변화는 무엇인가요?",
+   "area": "동향",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t30",
+   "type": "howto",
+   "question": "수목원·식물원 R&D 전략계획은 어떻게 세우나요?",
+   "area": "산림·수목원 R&D",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t31",
+   "type": "define",
+   "question": "산림 탄소중립 R&D는 어떤 기술을 다루나요?",
+   "area": "산림·수목원 R&D",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t32",
+   "type": "guide",
+   "question": "스마트팜 실증 테스트를 준비할 때 무엇을 확인해야 하나요?",
+   "area": "스마트팜",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t33",
+   "type": "define",
+   "question": "AI-Native 조직과 지식자산화는 무엇을 뜻하나요?",
+   "area": "데이터·AI",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t34",
+   "type": "howto",
+   "question": "경제성 분석(B/C)은 어떤 방식으로 하나요?",
+   "area": "산업 컨설팅",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t35",
+   "type": "define",
+   "question": "대학 기술지주회사는 어떤 역할을 하나요?",
+   "area": "네트워킹·투자연계",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t36",
+   "type": "trend",
+   "question": "이번 달 대전·충청권 과학기술·산업 지원사업은 무엇이 있나요?",
+   "area": "동향",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t37",
+   "type": "howto",
+   "question": "기후변화 대응 연구사업의 효과는 어떻게 측정하나요?",
+   "area": "산림·수목원 R&D",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t38",
+   "type": "guide",
+   "question": "AI 라이브러리·데이터셋 구축 사업을 기획할 때 무엇을 정해야 하나요?",
+   "area": "데이터·AI",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t39",
+   "type": "define",
+   "question": "수직농장(Vertical Farm)의 장단점은 무엇인가요?",
+   "area": "스마트팜",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t40",
+   "type": "howto",
+   "question": "기술 동향 분석에서 논문·특허 데이터는 어떻게 읽나요?",
+   "area": "기술·특허 분석",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t41",
+   "type": "define",
+   "question": "공공 R&D에서 사전기획과 본기획은 어떻게 다른가요?",
+   "area": "정책·R&D 기획",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t42",
+   "type": "guide",
+   "question": "지자체가 그린바이오 산업화 시설을 만들 때 무엇을 먼저 따져야 하나요?",
+   "area": "그린바이오",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t43",
+   "type": "trend",
+   "question": "최근 피지컬 AI·로봇 분야 정부 지원 방향은 어떻게 바뀌었나요?",
+   "area": "동향",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t44",
+   "type": "howto",
+   "question": "성과지표(KPI)는 어떤 기준으로 고르나요?",
+   "area": "정책·R&D 기획",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t45",
+   "type": "define",
+   "question": "우주산업 클러스터란 무엇이고 대전은 어떤 역할을 맡나요?",
+   "area": "산업 컨설팅",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t46",
+   "type": "guide",
+   "question": "특허 확보 전략 수립을 맡길 때 어떤 자료를 넘겨야 하나요?",
+   "area": "기술·특허 분석",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t47",
+   "type": "define",
+   "question": "디지털 트윈은 스마트팜에서 어떻게 쓰이나요?",
+   "area": "스마트팜",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t48",
+   "type": "howto",
+   "question": "지역 산업 육성 발전전략 보고서는 어떤 목차로 구성하나요?",
+   "area": "정책·R&D 기획",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t49",
+   "type": "trend",
+   "question": "올해 정부 R&D 제도 개편에서 기획 담당자가 바꿔야 할 것은 무엇인가요?",
+   "area": "동향",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t50",
+   "type": "define",
+   "question": "정책기획 컨설팅 회사는 어떤 일을 하나요?",
+   "area": "회사",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t51",
+   "type": "guide",
+   "question": "R&D 기획 용역 업체를 고를 때 무엇을 봐야 하나요?",
+   "area": "정책·R&D 기획",
+   "status": "pending",
+   "post": null
+  },
+  {
+   "id": "t52",
+   "type": "case",
+   "question": "이노베리움은 어떤 분야의 과제를 해 왔나요?",
+   "area": "회사",
+   "status": "pending",
+   "post": null
+  }
+ ]
+}

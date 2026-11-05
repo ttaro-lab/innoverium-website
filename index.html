@@ -362,27 +362,27 @@ svg.solution-bg-img {
 .zone-crops { font-size: 0.75rem; color: var(--text-dim); margin-top: 0.4rem; }
 .zone-emoji { font-size: 1.8rem; margin-bottom: 0.5rem; }
 
-/* VCNS Visual */
-.vcns-flow {
+/* Flow Visual */
+.flow-flow {
   display: flex; flex-direction: column; gap: 1rem;
   position: relative; z-index: 1;
 }
-.vcns-step {
+.flow-step {
   display: flex; align-items: center; gap: 1rem;
   background: rgba(0,0,0,0.3); border-radius: 10px;
   padding: 1rem 1.2rem;
   border-left: 3px solid var(--accent-blue);
   transition: all 0.3s;
 }
-.vcns-step:hover { background: rgba(0, 188, 212, 0.08); }
-.vcns-step-num {
+.flow-step:hover { background: rgba(0, 188, 212, 0.08); }
+.flow-step-num {
   font-family: var(--font-tech); font-size: 0.7rem;
   width: 28px; height: 28px; border-radius: 50%;
   background: rgba(0, 188, 212, 0.15); color: var(--accent-blue);
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0; font-weight: 600;
 }
-.vcns-step-text { font-size: 0.85rem; color: var(--text-main); }
+.flow-step-text { font-size: 0.85rem; color: var(--text-main); }
 
 /* ===== TECHNOLOGY (Patent) ===== */
 .technology { background: var(--green-deep); position: relative; }
@@ -596,6 +596,15 @@ footer {
   .metric-label { font-size: 0.8rem; }
 }
 </style>
+<!-- AEO:HEAD START -->
+<link rel="canonical" href="https://innoverium.com/">
+<link rel="alternate" type="application/rss+xml" title="이노베리움 블로그" href="https://innoverium.com/blog/feed.xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="이노베리움">
+<meta property="og:url" content="https://innoverium.com/">
+<meta property="og:locale" content="ko_KR">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://innoverium.com/#org", "name": "이노베리움", "alternateName": "INNOVERIUM", "legalName": "이노베리움 주식회사", "url": "https://innoverium.com/", "email": "innoverium@gmail.com", "foundingDate": "2025", "founder": {"@type": "Person", "name": "한진아"}, "description": "이노베리움은 정책·R&D 기획, 산업 컨설팅, 기술·특허 분석과 AI 기반 그린바이오 스마트팜 기술 개발을 하는 대전의 전문 과학기술서비스 기업입니다.", "address": {"@type": "PostalAddress", "addressCountry": "KR", "addressRegion": "대전광역시", "addressLocality": "대전광역시 유성구", "streetAddress": "대전광역시 유성구 은구비남로33번길 13-8, 304호"}, "taxID": "416-88-03156", "knowsAbout": ["산림·수목원 R&D", "에너지·수소·바이오 항공유", "우주산업 입지", "데이터·AI 산업육성", "피지컬 AI", "그린바이오 소재(식품·화장품)", "스마트팜", "기술사업화·실증"]}</script>
+<!-- AEO:HEAD END -->
 </head>
 <body>
 
@@ -608,6 +617,7 @@ footer {
     <a href="#technology">핵심기술</a>
     <a href="#metrics">성과지표</a>
     <a href="#roadmap">로드맵</a>
+    <a href="/blog/">블로그</a>
     <a href="#contact" class="nav-contact">문의하기</a>
   </div>
   <div class="hamburger" id="hamburger" onclick="toggleNav()">
@@ -798,10 +808,10 @@ footer {
     <div class="section-title reveal">두 개의 엔진, 하나의 플랫폼</div>
     <div class="section-desc reveal">수요 예측 AI와 정밀 환경제어 스마트팜이 실시간 연동되는 수요 반응형 지능 생산 시스템</div>
 
-    <!-- VCNS-FARM -->
+    <!-- 수요 예측 엔진 -->
     <div class="solution-block reveal">
       <div>
-        <div class="solution-name">VCNS-FARM</div>
+        <div class="solution-name">DEMAND ENGINE</div>
         <div class="solution-title">AI 지능형 수요 예측 엔진</div>
         <div class="solution-desc">공급 가능 물량과 수요처 수량을 매칭하여 최적의 생산 체계를 제시하는 AI 소프트웨어 솔루션입니다.</div>
         <ul class="solution-features">
@@ -827,7 +837,7 @@ footer {
           preserveAspectRatio="none"
         >
           <defs>
-            <linearGradient id="vcnsG" x1="0" y1="0" x2="1" y2="1">
+            <linearGradient id="flowG" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0" stop-color="#2ecc71" stop-opacity="0.35" />
               <stop offset="1" stop-color="#00bcd4" stop-opacity="0.15" />
             </linearGradient>
@@ -850,7 +860,7 @@ footer {
           </g>
 
           <!-- header glow -->
-          <rect x="70" y="70" width="860" height="100" rx="22" fill="url(#vcnsG)" stroke="#00bcd4" stroke-opacity="0.25" stroke-width="2" />
+          <rect x="70" y="70" width="860" height="100" rx="22" fill="url(#flowG)" stroke="#00bcd4" stroke-opacity="0.25" stroke-width="2" />
 
           <!-- bars (demand/supply) -->
           <g>
@@ -882,31 +892,31 @@ footer {
             <path d="M875 185 L900 200 L875 215" />
           </g>
         </svg>
-        <div class="vcns-flow">
-          <div class="vcns-step">
-            <div class="vcns-step-num">01</div>
-            <div class="vcns-step-text">수요처 기능성 제품 수요 요청</div>
+        <div class="flow-flow">
+          <div class="flow-step">
+            <div class="flow-step-num">01</div>
+            <div class="flow-step-text">수요처 기능성 제품 수요 요청</div>
           </div>
-          <div class="vcns-step">
-            <div class="vcns-step-num">02</div>
-            <div class="vcns-step-text">AI 수요 예측 → 스마트팜 생산 계획 수립</div>
+          <div class="flow-step">
+            <div class="flow-step-num">02</div>
+            <div class="flow-step-text">AI 수요 예측 → 스마트팜 생산 계획 수립</div>
           </div>
-          <div class="vcns-step">
-            <div class="vcns-step-num">03</div>
-            <div class="vcns-step-text">디지털 트윈 기반 생산능력 분석</div>
+          <div class="flow-step">
+            <div class="flow-step-num">03</div>
+            <div class="flow-step-text">디지털 트윈 기반 생산능력 분석</div>
           </div>
-          <div class="vcns-step">
-            <div class="vcns-step-num">04</div>
-            <div class="vcns-step-text">Supply-Demand 최적 매칭 실행</div>
+          <div class="flow-step">
+            <div class="flow-step-num">04</div>
+            <div class="flow-step-text">Supply-Demand 최적 매칭 실행</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- MOAI-FARM -->
+    <!-- 그린바이오팜 -->
     <div class="solution-block reveal">
       <div>
-        <div class="solution-name">MOAI-FARM</div>
+        <div class="solution-name">GREENBIO FARM</div>
         <div class="solution-title">다품종 정밀환경 그린바이오팜</div>
         <div class="solution-desc">독립 환경 존(Zone) 기반으로 다품종을 동시 재배하며, AI 수요 예측과 실시간 연동되는 하드웨어 플랫폼입니다.</div>
         <ul class="solution-features">
@@ -1107,7 +1117,7 @@ footer {
       <div class="roadmap-item reveal">
         <div class="roadmap-year">2026 H1</div>
         <div class="roadmap-title">기술 내재화 &amp; 제품화 개발</div>
-        <div class="roadmap-desc">특허 기술 교육 및 노하우 이전, MOAI-FARM 설계 검토 및 프로토타입 개발</div>
+        <div class="roadmap-desc">특허 기술 교육 및 노하우 이전, 정밀환경 그린바이오팜 설계 검토 및 프로토타입 개발</div>
       </div>
       <div class="roadmap-item reveal">
         <div class="roadmap-year">2026 H2</div>
@@ -1117,7 +1127,7 @@ footer {
       <div class="roadmap-item reveal">
         <div class="roadmap-year">2027 Q2</div>
         <div class="roadmap-title">공식 상용화 출시</div>
-        <div class="roadmap-desc">MOAI-FARM + VCNS-FARM 정식 런칭, B2B 원물 공급 계약 체결</div>
+        <div class="roadmap-desc">그린바이오팜과 수요 예측 엔진 정식 런칭, B2B 원물 공급 계약 체결</div>
         <div class="roadmap-revenue">목표 매출 35억 원</div>
       </div>
       <div class="roadmap-item reveal">
@@ -1129,7 +1139,7 @@ footer {
       <div class="roadmap-item reveal">
         <div class="roadmap-year">2029</div>
         <div class="roadmap-title">SaaS 모델 &amp; 글로벌 진출</div>
-        <div class="roadmap-desc">VCNS-FARM SaaS 적용 확대, K-스마트팜 패키지 수출 모델 개발</div>
+        <div class="roadmap-desc">수요 예측 엔진 SaaS 적용 확대, K-스마트팜 패키지 수출 모델 개발</div>
         <div class="roadmap-revenue">목표 매출 105억 원</div>
       </div>
     </div>
@@ -1156,7 +1166,7 @@ footer {
       <div class="team-card reveal">
         <div class="team-card-icon">🤝</div>
         <h3>기술이전 네트워크</h3>
-        <p>KISTI VCNS 시스템 기술이전 경험, 한국전자기술연구원 협력</p>
+        <p>공공 연구기관 기술 도입 경험, 한국전자기술연구원 협력</p>
       </div>
       <div class="team-card reveal">
         <div class="team-card-icon">🌱</div>
@@ -1173,8 +1183,7 @@ footer {
     <h2 class="reveal">함께 성장할 파트너를<br>찾고 있습니다</h2>
     <p class="reveal">원물 제조업체, 스마트팜 농가, 지자체, 투자사 등<br>그린바이오 생태계의 모든 파트너와의 협력을 환영합니다.</p>
     <div class="reveal">
-      <a href="mailto:hjina0428@hanmail.net" class="btn-primary" style="margin-right: 1rem;">이메일 문의 →</a>
-      <a href="tel:010-2615-5871" class="btn-outline">전화 문의</a>
+      <a href="mailto:innoverium@gmail.com" class="btn-primary">이메일 문의 →</a>
     </div>
   </div>
 </section>
