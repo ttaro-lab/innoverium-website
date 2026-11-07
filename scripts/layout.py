@@ -15,20 +15,20 @@ def e(s):
     return html.escape(str(s or ""), quote=True)
 
 
-# (키, 이름, 주소, 하위메뉴[(이름, 설명, 주소)])
+# (키, 이름, 주소, 하위메뉴[(이름, 주소)]) · 메가메뉴와 모바일 메뉴가 이 목록으로 그려집니다
 MENU = [
-    ("about", "회사소개", "/#about", []),
-    ("policy", "정책 기획", "/business/policy/", []),
-    ("rnd", "R&D 기획", "/business/rnd/", []),
-    ("analysis", "조사분석", "/business/analysis/", []),
-    ("research", "연구개발", "/research/", [("스마트팜", "AI 수요 예측 · 그린바이오팜", "/research/#smart-farm")]),
-    ("projects", "수행실적", "/#projects", []),
-    ("blog", "블로그", "/blog/", []),
+    ("about", "회사소개", "/about/", [("회사 개요", "/about/"), ("수행실적", "/about/#projects"), ("조직·인력", "/about/#team"), ("오시는 길", "/about/#location")]),
+    ("policy", "정책 기획", "/business/policy/", [("주요 업무", "/business/policy/#scope"), ("진행 순서", "/business/policy/#process"), ("수행실적", "/business/policy/#track")]),
+    ("rnd", "R&D 기획", "/business/rnd/", [("주요 업무", "/business/rnd/#scope"), ("진행 순서", "/business/rnd/#process"), ("수행실적", "/business/rnd/#track")]),
+    ("analysis", "조사분석", "/business/analysis/", [("주요 업무", "/business/analysis/#scope"), ("진행 순서", "/business/analysis/#process"), ("수행실적", "/business/analysis/#track"), ("연계 업무", "/business/analysis/#related")]),
+    ("research", "연구개발", "/research/", [("스마트팜", "/research/#smart-farm"), ("개발 내용", "/research/#develop"), ("핵심 특허", "/research/#patent"), ("상용화 로드맵", "/research/#roadmap")]),
+    ("news", "알림마당", "/blog/", [("블로그", "/blog/"), ("문의하기", "/#contact")]),
 ]
 
 # 사이트 전체 페이지 목록 (sitemap.xml, llms.txt에 씁니다)
 PAGES = [
-    ("/", "홈", "정책 기획, R&D 기획, 조사분석, 연구개발 소개와 수행실적"),
+    ("/", "홈", "정책 기획, R&D 기획, 조사분석, 연구개발 소개와 최신 소식"),
+    ("/about/", "회사소개", "회사 개요, 수행실적 전체, 조직·인력, 오시는 길"),
     ("/business/policy/", "정책 기획", "지역 산업육성 전략, 기관 R&D 전략계획, 성과관리 체계 설계"),
     ("/business/rnd/", "R&D 기획", "신규 R&D 사업 사전기획·본기획, 기획요소 도출, 연구 인프라 구축 기획"),
     ("/business/analysis/", "조사분석", "기술·특허 동향, 사전타당성, 입지분석·수요조사, 효과성·성과분석"),
@@ -36,52 +36,53 @@ PAGES = [
 ]
 
 FONTS = (
-    '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
     '<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">\n'
-    '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">\n'
     '<link rel="stylesheet" href="/assets/site.css">'
 )
 
 
 def header(current=""):
-    items = []
+    top, mega = [], []
     for key, name, href, subs in MENU:
         cur = ' aria-current="page"' if key == current else ""
-        if subs:
-            sub = "".join(f'<a href="{h}">{e(n)}<small>{e(d)}</small></a>' for n, d, h in subs)
-            items.append(f'<li class="has-sub"><a href="{href}"{cur}>{e(name)}</a><div class="sub">{sub}</div></li>')
-        else:
-            items.append(f'<li><a href="{href}"{cur}>{e(name)}</a></li>')
-    items.append('<li class="ask"><a href="/#contact">문의하기</a></li>')
+        sub = "".join(f'<li><a href="{h}">{e(n)}</a></li>' for n, h in subs)
+        top.append(f'<li class="d1{" on" if cur else ""}"><a href="{href}"{cur}>{e(name)}</a><ul class="d2">{sub}</ul></li>')
     return (
         '<a class="skip" href="#main">본문 바로가기</a>\n'
-        '<header class="hd"><div class="hd-in">'
-        f'<a class="logo" href="/"><b>{e(site["name_en"])}</b><span>{e(site["name"])}</span></a>'
-        '<button class="menu-btn" aria-label="메뉴 열기" aria-expanded="false" '
-        "onclick=\"var g=document.getElementById('gnb');g.classList.toggle('open');this.setAttribute('aria-expanded',g.classList.contains('open'))\">"
+        '<div class="util"><div class="in"><a href="/blog/">블로그</a><a href="/#contact">문의하기</a></div></div>\n'
+        '<header class="hd"><div class="in">'
+        f'<a class="logo" href="/" aria-label="{e(site["name"])} 홈">{LOGO}<span><b>{e(site["name"])}</b><small>{e(site["name_en"])}</small></span></a>'
+        f'<nav class="gnb" id="gnb" aria-label="주메뉴"><ul>{"".join(top)}</ul></nav>'
+        '<button class="menu-btn" aria-label="전체메뉴" aria-expanded="false" aria-controls="gnb" '
+        "onclick=\"var h=document.querySelector('.hd');h.classList.toggle('open');this.setAttribute('aria-expanded',h.classList.contains('open'))\">"
         '<i></i><i></i><i></i></button>'
-        f'<ul class="gnb" id="gnb">{"".join(items)}</ul>'
-        '</div></header>'
+        '</div><div class="mega-bg"></div></header>'
     )
 
 
+# 잎 두 장과 온실 지붕선을 합친 로고 기호
+LOGO = ('<svg class="mark" viewBox="0 0 40 40" aria-hidden="true">'
+        '<rect x="1" y="1" width="38" height="38" rx="11" fill="#126BDA"/>'
+        '<path d="M9 27 L20 12 L31 27" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/>'
+        '<path d="M20 30 C14 30 12 25 13 21 C17 21 20 24 20 30Z" fill="#7DDB8A"/>'
+        '<path d="M20 30 C26 30 28 25 27 21 C23 21 20 24 20 30Z" fill="#C6F0A8"/></svg>')
+
+
 def footer():
-    col = lambda title, links: (f'<div><h5>{title}</h5><ul>'
-                                + "".join(f'<li><a href="{h}">{e(n)}</a></li>' for n, h in links) + "</ul></div>")
+    links = "".join(f'<option value="{h}">{e(n)}</option>' for _, n, h, _ in MENU)
     return (
-        '<footer class="ft"><div class="wrap">'
-        '<div class="ft-map">'
-        f'<div><a class="logo" href="/"><b>{e(site["name_en"])}</b><span>{e(site["name"])}</span></a>'
-        f'<p>{e(site["one_line"])}</p></div>'
-        + col("회사", [("회사소개", "/#about"), ("수행실적", "/#projects"), ("문의하기", "/#contact")])
-        + col("사업분야", [("정책 기획", "/business/policy/"), ("R&D 기획", "/business/rnd/"), ("조사분석", "/business/analysis/")])
-        + col("연구개발", [("연구개발 개요", "/research/"), ("스마트팜", "/research/#smart-farm"), ("핵심 특허", "/research/#patent")])
-        + col("자료", [("블로그", "/blog/"), ("RSS", "/blog/feed.xml")])
-        + '</div><div class="ft-biz">'
-        f'<span>{e(site["legal_name"])} · 대표이사 {e(site["ceo"])} · 사업자등록번호 {e(site["business_number"])} · {e(site["address"])} · '
-        f'<a href="mailto:{e(site["email"])}">{e(site["email"])}</a></span>'
-        f'<span>© {site["founded"]}–2026 {e(site["name_en"])} Inc.</span>'
-        '</div></div></footer>'
+        '<footer class="ft"><div class="in">'
+        '<div class="ft-top">'
+        '<ul class="ft-links"><li><a href="/about/">회사소개</a></li><li><a href="/about/#location">오시는 길</a></li>'
+        '<li><a href="/blog/feed.xml">RSS</a></li><li><a href="/#contact">문의하기</a></li></ul>'
+        '<label class="ft-sel"><span class="skip">사업분야 바로가기</span>'
+        f'<select onchange="if(this.value)location.href=this.value"><option value="">사업분야 바로가기</option>{links}</select></label>'
+        '</div>'
+        f'<div class="ft-brand">{LOGO}<b>{e(site["name"])}</b></div>'
+        f'<address>{e(site["address"])} · 대표이사 {e(site["ceo"])} · 사업자등록번호 {e(site["business_number"])}<br>'
+        f'문의 <a href="mailto:{e(site["email"])}">{e(site["email"])}</a></address>'
+        f'<p class="copy">Copyright © 2026 {e(site["legal_name"])}. All Rights Reserved.</p>'
+        '</div></footer>'
     )
 
 

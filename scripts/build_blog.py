@@ -66,16 +66,17 @@ def reading_minutes(p):
 
 
 STYLE = """
-main.post{max-width:760px;margin:0 auto;padding:52px 24px 88px}
-.kind{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;color:var(--rust);text-transform:uppercase}
-main.post h1{font-family:var(--serif);font-size:clamp(1.7rem,4vw,2.35rem);line-height:1.4;margin:10px 0 14px;font-weight:700;text-wrap:balance}
+main.post{max-width:820px;margin:0 auto;padding:52px 24px 88px}
+.cta{border-radius:20px}.tbl table{border-radius:12px}
+.kind{font-family:var(--head);font-size:.74rem;letter-spacing:.12em;color:var(--blue);text-transform:uppercase}
+main.post h1{font-family:var(--head);font-size:clamp(1.7rem,4vw,2.35rem);line-height:1.4;margin:10px 0 14px;font-weight:700;text-wrap:balance}
 .meta{font-size:.86rem;color:var(--mute);margin-bottom:28px}
 .lead{font-size:1.12rem;margin-bottom:24px}
-.lead strong,.ans strong{background:linear-gradient(transparent 64%,rgba(198,211,107,.55) 64%);font-weight:600}
-.sum{border-top:2px solid var(--ink);border-bottom:1px solid var(--line);padding:16px 0 14px;margin:28px 0 8px}
-.sum b{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;color:var(--forest);margin-bottom:6px}
+.lead strong,.ans strong{background:linear-gradient(transparent 64%,rgba(18,107,218,.16) 64%);font-weight:600}
+.sum{border-top:2px solid var(--navy);border-bottom:1px solid var(--line);padding:16px 0 14px;margin:28px 0 8px}
+.sum b{display:block;font-family:var(--head);font-size:.72rem;letter-spacing:.12em;color:var(--blue);margin-bottom:6px}
 .sum ol{padding-left:20px}.sum li{margin:2px 0}
-main.post h2{font-family:var(--serif);font-size:1.38rem;margin:48px 0 12px;line-height:1.5;text-wrap:balance}
+main.post h2{font-family:var(--head);font-size:1.38rem;margin:48px 0 12px;line-height:1.5;text-wrap:balance}
 main.post h3{font-size:1.04rem;margin:26px 0 6px}
 main.post p{margin:0 0 14px}
 ul.list{margin:0 0 16px 20px}
@@ -83,23 +84,23 @@ ul.list{margin:0 0 16px 20px}
 .tbl table{border-collapse:collapse;width:100%;min-width:460px;font-size:.93rem}
 .tbl caption{caption-side:top;text-align:left;color:var(--mute);font-size:.82rem;padding-bottom:6px}
 .tbl th,.tbl td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
-.tbl th{background:var(--paper-2);font-weight:600}
+.tbl th{background:var(--sky);font-weight:600}
 .src{font-size:.9rem;color:var(--mute)}.src li{margin:4px 0 4px 18px}
-.src a{color:var(--forest)}
-.cta{margin:48px 0 0;padding:24px 26px;background:var(--ink);color:var(--paper)}
-.cta p{color:#BFC7C1;margin-bottom:6px}
-.cta .mail{font-family:var(--mono);color:var(--paper);font-size:1.05rem}
+.src a{color:var(--blue)}
+.cta{margin:48px 0 0;padding:24px 26px;background:var(--navy);color:#fff}
+.cta p{color:#C9D4E6;margin-bottom:6px}
+.cta .mail{font-family:var(--head);color:#fff;font-size:1.05rem}
 .tags{margin-top:26px;font-size:.85rem;color:var(--mute)}
-.more{margin-top:48px;border-top:1px solid var(--ink);padding-top:20px}
+.more{margin-top:48px;border-top:1px solid var(--navy);padding-top:20px}
 .more h2{margin-top:0!important;font-size:1.05rem!important}
 .more a{display:block;text-decoration:none;padding:9px 0;border-bottom:1px solid var(--line)}
-.more a:hover{color:var(--forest)}
-.posts{list-style:none;border-top:1px solid var(--ink);margin-top:20px}
+.more a:hover{color:var(--blue)}
+.posts{list-style:none;border-top:1px solid var(--navy);margin-top:20px}
 .posts li{border-bottom:1px solid var(--line);padding:22px 0}
 .posts a{text-decoration:none;font-size:1.16rem;font-weight:600;line-height:1.5;display:block;margin:4px 0 6px}
-.posts a:hover{color:var(--forest)}
-.posts p{color:var(--ink-2);font-size:.95rem;margin:0}
-.posts time{font-family:var(--mono);font-size:.78rem;color:var(--mute);margin-left:8px}
+.posts a:hover{color:var(--blue)}
+.posts p{color:var(--text-2);font-size:.95rem;margin:0}
+.posts time{font-family:var(--head);font-size:.78rem;color:var(--mute);margin-left:8px}
 """
 
 
@@ -112,7 +113,7 @@ def shell(title, desc, canonical, body, jsonld, og_type="article", current=""):
 {layout.ld(jsonld)}
 </head>
 <body>
-{layout.header("blog")}
+{layout.header("news")}
 <main class="post" id="main">
 {body}
 </main>
@@ -254,9 +255,9 @@ def update_home(posts=()):
     f = ROOT / "index.html"
     s = f.read_text(encoding="utf-8")
     items = "".join(
-        f'<li><a href="/blog/{p["slug"]}/"><time datetime="{p["date"]}">{p["date"].replace("-", ".")}</time>'
-        f'<b>{e(p["title"])}</b><span>{e(TYPE_LABEL.get(p.get("type"), ""))}</span></a></li>' for p in list(posts)[:5])
-    latest = f'{LATEST_START}<ul class="latest">{items}</ul>{LATEST_END}'
+        f'<li><a href="/blog/{p["slug"]}/"><span class="badge">{e(TYPE_LABEL.get(p.get("type"), "블로그"))}</span>'
+        f'<b>{e(p["title"])}</b><time datetime="{p["date"]}">{p["date"].replace("-", ".")}</time></a></li>' for p in list(posts)[:5])
+    latest = f'{LATEST_START}<ul>{items}</ul>{LATEST_END}'
     if LATEST_START in s:
         s = re.sub(re.escape(LATEST_START) + r".*?" + re.escape(LATEST_END), lambda m: latest, s, flags=re.S)
     block = (f'{HEAD_START}\n<link rel="canonical" href="{BASE}/">\n'

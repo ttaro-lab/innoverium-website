@@ -16,7 +16,8 @@
 - 소비자 Deep Dive 워크숍: 6가지 핵심 질문으로 제품·사업계획을 시장 관점에서 검증
 
 ## 페이지
-- [홈](https://www.innoverium.com/): 정책 기획, R&D 기획, 조사분석, 연구개발 소개와 수행실적
+- [홈](https://www.innoverium.com/): 정책 기획, R&D 기획, 조사분석, 연구개발 소개와 최신 소식
+- [회사소개](https://www.innoverium.com/about/): 회사 개요, 수행실적 전체, 조직·인력, 오시는 길
 - [정책 기획](https://www.innoverium.com/business/policy/): 지역 산업육성 전략, 기관 R&D 전략계획, 성과관리 체계 설계
 - [R&D 기획](https://www.innoverium.com/business/rnd/): 신규 R&D 사업 사전기획·본기획, 기획요소 도출, 연구 인프라 구축 기획
 - [조사분석](https://www.innoverium.com/business/analysis/): 기술·특허 동향, 사전타당성, 입지분석·수요조사, 효과성·성과분석
