@@ -14,8 +14,8 @@
    "type": "define",
    "question": "예비타당성조사 사전기획이란 무엇인가요?",
    "area": "정책·R&D 기획",
-   "status": "pending",
-   "post": null
+   "status": "done",
+   "post": "rnd-pre-planning"
   },
   {
    "id": "s01",
