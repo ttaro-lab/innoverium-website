@@ -18,6 +18,9 @@ import sys
 from datetime import date
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import layout  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "content"
 POSTS = CONTENT / "posts"
@@ -63,89 +66,58 @@ def reading_minutes(p):
 
 
 STYLE = """
-:root{--bg:#0A0F0D;--card:#111A15;--line:rgba(255,255,255,.08);--text:#E3EAE5;--dim:#93A89B;--bright:#fff;
---green:#2ECC71;--green-soft:rgba(46,204,113,.14);--mark:rgba(46,204,113,.28);
---display:'Outfit','Noto Sans KR',sans-serif;--body:'Noto Sans KR',sans-serif;--tech:'Space Grotesk',monospace}
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.8;font-size:17px}
-a{color:var(--green)}
-.bar{border-bottom:1px solid var(--line);background:var(--bg);position:sticky;top:0;z-index:5}
-.bar-in{max-width:1080px;margin:0 auto;padding:14px max(20px,env(safe-area-inset-left));display:flex;justify-content:space-between;align-items:center;gap:16px}
-.logo{font-family:var(--display);font-weight:800;font-size:1.3rem;color:var(--bright);text-decoration:none;letter-spacing:-.5px}
-.logo span{font-weight:400;font-size:.7rem;color:var(--dim);margin-left:6px;letter-spacing:2px}
-.bar nav a{color:var(--dim);text-decoration:none;font-size:.9rem;margin-left:18px}
-.bar nav a:hover,.bar nav a[aria-current]{color:var(--green)}
-main{max-width:760px;margin:0 auto;padding:48px max(20px,env(safe-area-inset-left)) 80px}
-.crumb{font-size:.82rem;color:var(--dim);margin-bottom:18px}
-.crumb a{color:var(--dim);text-decoration:none}
-.kind{font-family:var(--tech);font-size:.72rem;letter-spacing:3px;color:var(--green);text-transform:uppercase}
-h1{font-family:var(--display);font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.35;color:var(--bright);margin:10px 0 14px;font-weight:700;text-wrap:balance}
-.meta{font-size:.85rem;color:var(--dim);margin-bottom:28px}
-.lead{font-size:1.12rem;color:var(--bright);margin-bottom:24px}
-.lead strong,.ans strong{background:linear-gradient(transparent 60%,var(--mark) 60%);font-weight:600}
-.sum{border:1px solid rgba(46,204,113,.35);background:var(--green-soft);border-radius:4px;padding:18px 22px;margin:28px 0 8px}
-.sum b{display:block;font-family:var(--tech);font-size:.72rem;letter-spacing:3px;color:var(--green);margin-bottom:8px}
+main.post{max-width:820px;margin:0 auto;padding:52px 24px 88px}
+.cta{border-radius:20px}.tbl table{border-radius:12px}
+.kind{font-family:var(--head);font-size:.74rem;letter-spacing:.12em;color:var(--blue);text-transform:uppercase}
+main.post h1{font-family:var(--head);font-size:clamp(1.7rem,4vw,2.35rem);line-height:1.4;margin:10px 0 14px;font-weight:700;text-wrap:balance}
+.meta{font-size:.86rem;color:var(--mute);margin-bottom:28px}
+.lead{font-size:1.12rem;margin-bottom:24px}
+.lead strong,.ans strong{background:linear-gradient(transparent 64%,rgba(18,107,218,.16) 64%);font-weight:600}
+.sum{border-top:2px solid var(--navy);border-bottom:1px solid var(--line);padding:16px 0 14px;margin:28px 0 8px}
+.sum b{display:block;font-family:var(--head);font-size:.72rem;letter-spacing:.12em;color:var(--blue);margin-bottom:6px}
 .sum ol{padding-left:20px}.sum li{margin:2px 0}
-h2{font-family:var(--display);font-size:1.4rem;color:var(--bright);margin:48px 0 12px;line-height:1.45;text-wrap:balance}
-h3{font-size:1.06rem;color:var(--bright);margin:26px 0 6px}
-p{margin:0 0 14px}
+main.post h2{font-family:var(--head);font-size:1.38rem;margin:48px 0 12px;line-height:1.5;text-wrap:balance}
+main.post h3{font-size:1.04rem;margin:26px 0 6px}
+main.post p{margin:0 0 14px}
 ul.list{margin:0 0 16px 20px}
 .tbl{overflow-x:auto;margin:14px 0 22px}
-table{border-collapse:collapse;width:100%;min-width:460px;font-size:.93rem}
-caption{caption-side:top;text-align:left;color:var(--dim);font-size:.82rem;padding-bottom:6px}
-th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
-th{background:var(--card);color:var(--bright);font-weight:500}
-.src{font-size:.9rem;color:var(--dim)}.src li{margin:4px 0 4px 18px}
-.cta{margin:48px 0 0;padding:26px;border:1px solid var(--line);background:var(--card);border-radius:4px}
-.cta p{color:var(--dim);margin-bottom:6px}
-.cta .mail{font-family:var(--tech);color:var(--bright);font-size:1.05rem}
-.tags{margin-top:26px;font-size:.85rem;color:var(--dim)}
-.more{margin-top:48px;border-top:1px solid var(--line);padding-top:22px}
-.more h2{margin-top:0;font-size:1.1rem}
-.more a{display:block;color:var(--text);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line)}
-.more a:hover{color:var(--green)}
-.posts{list-style:none}
+.tbl table{border-collapse:collapse;width:100%;min-width:460px;font-size:.93rem}
+.tbl caption{caption-side:top;text-align:left;color:var(--mute);font-size:.82rem;padding-bottom:6px}
+.tbl th,.tbl td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+.tbl th{background:var(--sky);font-weight:600}
+.src{font-size:.9rem;color:var(--mute)}.src li{margin:4px 0 4px 18px}
+.src a{color:var(--blue)}
+.cta{margin:48px 0 0;padding:24px 26px;background:var(--navy);color:#fff}
+.cta p{color:#C9D4E6;margin-bottom:6px}
+.cta .mail{font-family:var(--head);color:#fff;font-size:1.05rem}
+.tags{margin-top:26px;font-size:.85rem;color:var(--mute)}
+.more{margin-top:48px;border-top:1px solid var(--navy);padding-top:20px}
+.more h2{margin-top:0!important;font-size:1.05rem!important}
+.more a{display:block;text-decoration:none;padding:9px 0;border-bottom:1px solid var(--line)}
+.more a:hover{color:var(--blue)}
+.posts{list-style:none;border-top:1px solid var(--navy);margin-top:20px}
 .posts li{border-bottom:1px solid var(--line);padding:22px 0}
-.posts a{text-decoration:none;color:var(--bright);font-size:1.18rem;font-weight:500;line-height:1.5;display:block;margin:4px 0 6px}
-.posts a:hover{color:var(--green)}
-.posts p{color:var(--dim);font-size:.95rem;margin:0}
-.posts time{font-family:var(--tech);font-size:.78rem;color:var(--dim);margin-left:8px}
-footer{border-top:1px solid var(--line);color:var(--dim);font-size:.82rem}
-footer div{max-width:1080px;margin:0 auto;padding:22px max(20px,env(safe-area-inset-left))}
-@media (max-width:520px){body{font-size:16px}.bar nav a{margin-left:12px}}
+.posts a{text-decoration:none;font-size:1.16rem;font-weight:600;line-height:1.5;display:block;margin:4px 0 6px}
+.posts a:hover{color:var(--blue)}
+.posts p{color:var(--text-2);font-size:.95rem;margin:0}
+.posts time{font-family:var(--head);font-size:.78rem;color:var(--mute);margin-left:8px}
 """
-
-FONTS = '<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Space+Grotesk:wght@500;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">'
 
 
 def shell(title, desc, canonical, body, jsonld, og_type="article", current=""):
-    ld = "\n".join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in jsonld)
     return f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{e(title)}</title>
-<meta name="description" content="{e(desc)}">
-<link rel="canonical" href="{e(canonical)}">
-<link rel="alternate" type="application/rss+xml" title="{e(site['name'])} 블로그" href="{BASE}/blog/feed.xml">
-<meta property="og:type" content="{og_type}">
-<meta property="og:title" content="{e(title)}">
-<meta property="og:description" content="{e(desc)}">
-<meta property="og:url" content="{e(canonical)}">
-<meta property="og:site_name" content="{e(site['name'])}">
-<meta property="og:locale" content="ko_KR">
-{FONTS}
+{layout.head(title, desc, canonical, og_type=og_type)}
 <style>{STYLE}</style>
-{ld}
+{layout.ld(jsonld)}
 </head>
 <body>
-<header class="bar"><div class="bar-in">
-<a class="logo" href="/">{e(site['name_en'])}<span>{e(site['name'])}</span></a>
-<nav><a href="/">회사 소개</a><a href="/blog/"{' aria-current="page"' if current=='blog' else ''}>블로그</a><a href="/#contact">문의</a></nav>
-</div></header>
+{layout.header("news")}
+<main class="post" id="main">
 {body}
-<footer><div>{e(site['legal_name'])} · 대표 {e(site['ceo'])} · 사업자등록번호 {e(site['business_number'])} · {e(site['address'])} · {e(site['email'])}</div></footer>
+</main>
+{layout.footer()}
 </body>
 </html>
 """
@@ -176,7 +148,7 @@ def render_table(t):
 
 def render_post(p, others):
     url = f"{BASE}/blog/{p['slug']}/"
-    out = [f'<main><article>',
+    out = [f'<article>',
            f'<div class="crumb"><a href="/">홈</a> › <a href="/blog/">블로그</a></div>',
            f'<div class="kind">{e(TYPE_LABEL.get(p.get("type"), "블로그"))}</div>',
            f'<h1>{e(p["title"])}</h1>',
@@ -209,7 +181,7 @@ def render_post(p, others):
         out.append('<div class="tags">' + " ".join("#" + e(t.replace(" ", "")) for t in p["tags"]) + "</div>")
     if others:
         out.append('<nav class="more"><h2>다른 글</h2>' + "".join(f'<a href="/blog/{o["slug"]}/">{e(o["title"])}</a>' for o in others) + "</nav>")
-    out.append("</article></main>")
+    out.append("</article>")
 
     ld = [
         org_ld(),
@@ -236,8 +208,8 @@ def render_index(posts):
     items = "".join(
         f'<li><span class="kind">{e(TYPE_LABEL.get(p.get("type"), ""))}</span><time datetime="{p["date"]}">{p["date"].replace("-", ".")}</time>'
         f'<a href="/blog/{p["slug"]}/">{e(p["title"])}</a><p>{e(p["lead"])}</p></li>' for p in posts)
-    desc = f"{site['name']} 블로그. 정책·R&D 기획, 산업 컨설팅, 기술·특허 분석, 그린바이오 스마트팜에 관한 질문에 답합니다."
-    body = f'<main><div class="kind">BLOG</div><h1>{e(site["name"])} 블로그</h1><p class="meta">{e(desc)}</p><ul class="posts">{items}</ul></main>'
+    desc = f"{site['name']} 블로그. 정책 기획, R&D 기획, 조사분석, 스마트팜 연구개발에 관한 질문에 답합니다."
+    body = f'<div class="kind">BLOG</div><h1>{e(site["name"])} 블로그</h1><p class="meta">{e(desc)}</p><ul class="posts">{items}</ul>'
     ld = [org_ld(), {"@context": "https://schema.org", "@type": "Blog", "@id": BASE + "/blog/#blog", "name": f"{site['name']} 블로그",
                      "url": BASE + "/blog/", "publisher": {"@id": ORG_ID}, "inLanguage": "ko-KR",
                      "blogPost": [{"@type": "BlogPosting", "headline": p["title"][:110], "url": f"{BASE}/blog/{p['slug']}/", "datePublished": p["date"]} for p in posts]}]
@@ -255,7 +227,8 @@ def render_feed(posts):
 
 def render_sitemap(posts):
     today = date.today().isoformat()
-    urls = [(BASE + "/", today), (BASE + "/blog/", posts[0]["date"] if posts else today)]
+    urls = [(BASE + path, today) for path, _, _ in layout.PAGES]
+    urls.append((BASE + "/blog/", posts[0]["date"] if posts else today))
     urls += [(f"{BASE}/blog/{p['slug']}/", p.get("updated", p["date"])) for p in posts]
     body = "".join(f"<url><loc>{u}</loc><lastmod>{d}</lastmod></url>" for u, d in urls)
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{body}</urlset>\n'
@@ -264,7 +237,10 @@ def render_sitemap(posts):
 def render_llms(posts):
     lines = [f"# {site['name']} ({site['legal_name']})", "", f"> {site['name']}은 {site['one_line']}입니다.", "",
              f"- 대표: {site['ceo']}", f"- 설립: {site['founded']}년", f"- 소재지: {site['address']}", f"- 문의: {site['email']}", "",
-             "## 하는 일", *[f"- {s}" for s in site["services"]], "", "## 블로그 글",
+             "## 하는 일", *[f"- {s}" for s in site["services"]], "",
+             "## 페이지", *[f"- [{n}]({BASE}{u}): {d}" for u, n, d in layout.PAGES], "",
+             "## 수행실적", *[f"- {t[0]} {t[1]} ({t[2]})" for t in sorted(site["track"], key=lambda t: t[0], reverse=True)], "",
+             "## 블로그 글",
              *[f"- [{p['title']}]({BASE}/blog/{p['slug']}/): {p['lead']}" for p in posts], ""]
     return "\n".join(lines)
 
@@ -272,9 +248,18 @@ def render_llms(posts):
 HEAD_START, HEAD_END = "<!-- AEO:HEAD START -->", "<!-- AEO:HEAD END -->"
 
 
-def update_home():
+LATEST_START, LATEST_END = "<!-- BLOG:LATEST START -->", "<!-- BLOG:LATEST END -->"
+
+
+def update_home(posts=()):
     f = ROOT / "index.html"
     s = f.read_text(encoding="utf-8")
+    items = "".join(
+        f'<li><a href="/blog/{p["slug"]}/"><span class="badge">{e(TYPE_LABEL.get(p.get("type"), "블로그"))}</span>'
+        f'<b>{e(p["title"])}</b><time datetime="{p["date"]}">{p["date"].replace("-", ".")}</time></a></li>' for p in list(posts)[:5])
+    latest = f'{LATEST_START}<ul>{items}</ul>{LATEST_END}'
+    if LATEST_START in s:
+        s = re.sub(re.escape(LATEST_START) + r".*?" + re.escape(LATEST_END), lambda m: latest, s, flags=re.S)
     block = (f'{HEAD_START}\n<link rel="canonical" href="{BASE}/">\n'
              f'<link rel="alternate" type="application/rss+xml" title="{e(site["name"])} 블로그" href="{BASE}/blog/feed.xml">\n'
              f'<meta property="og:type" content="website">\n<meta property="og:site_name" content="{e(site["name"])}">\n'
@@ -300,7 +285,7 @@ def main():
     (ROOT / "sitemap.xml").write_text(render_sitemap(posts), encoding="utf-8")
     (ROOT / "llms.txt").write_text(render_llms(posts), encoding="utf-8")
     (ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n", encoding="utf-8")
-    update_home()
+    update_home(posts)
     print(f"글 {len(posts)}편 빌드 완료")
 
 
