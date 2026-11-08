@@ -22,8 +22,8 @@
    "type": "define",
    "question": "스마트 농업과 스마트팜은 어떻게 다른가요?",
    "area": "스마트 농업",
-   "status": "pending",
-   "post": null
+   "status": "done",
+   "post": "smart-agriculture-vs-smart-farm"
   },
   {
    "id": "t03",
