@@ -30,8 +30,8 @@
    "type": "howto",
    "question": "지자체가 신규 R&D 사업을 기획할 때 어떤 순서로 진행하나요?",
    "area": "정책·R&D 기획",
-   "status": "pending",
-   "post": null
+   "status": "done",
+   "post": "local-government-rnd-planning-steps"
   },
   {
    "id": "t04",
