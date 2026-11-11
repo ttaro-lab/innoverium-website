@@ -46,8 +46,8 @@
    "type": "trend",
    "question": "이번 주 정부 R&D·산업 정책에서 지자체 담당자가 알아야 할 것은 무엇인가요?",
    "area": "동향",
-   "status": "pending",
-   "post": null
+   "status": "done",
+   "post": "local-government-policy-watch-nov-2"
   },
   {
    "id": "s02",
