@@ -46,16 +46,16 @@
    "type": "trend",
    "question": "이번 주 정부 R&D·산업 정책에서 지자체 담당자가 알아야 할 것은 무엇인가요?",
    "area": "동향",
-   "status": "pending",
-   "post": null
+   "status": "done",
+   "post": "local-government-policy-watch-nov-2"
   },
   {
    "id": "s02",
    "type": "howto",
    "question": "공공 연구기관의 특허를 기술이전받으려면 어떤 절차를 거치나요?",
    "area": "스마트 농업",
-   "status": "pending",
-   "post": null
+   "status": "done",
+   "post": "public-research-patent-licensing-steps"
   },
   {
    "id": "t06",
