@@ -62,8 +62,8 @@
    "type": "guide",
    "question": "사전타당성 조사 용역을 맡기기 전에 무엇을 준비해야 하나요?",
    "area": "산업 컨설팅",
-   "status": "pending",
-   "post": null
+   "status": "done",
+   "post": "pre-feasibility-study-preparation"
   },
   {
    "id": "t07",
