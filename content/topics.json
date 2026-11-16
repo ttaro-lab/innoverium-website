@@ -70,8 +70,8 @@
    "type": "define",
    "question": "핵심 특허 확보 전략(IP-R&D)이란 무엇인가요?",
    "area": "기술·특허 분석",
-   "status": "pending",
-   "post": null
+   "status": "done",
+   "post": "ip-rnd-patent-strategy"
   },
   {
    "id": "t08",
