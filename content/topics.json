@@ -78,8 +78,8 @@
    "type": "howto",
    "question": "산업 입지분석은 어떤 기준으로 하나요?",
    "area": "산업 컨설팅",
-   "status": "pending",
-   "post": null
+   "status": "done",
+   "post": "industrial-site-analysis-criteria"
   },
   {
    "id": "s03",
