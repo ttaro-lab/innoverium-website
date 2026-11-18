@@ -46,40 +46,40 @@
    "type": "trend",
    "question": "이번 주 정부 R&D·산업 정책에서 지자체 담당자가 알아야 할 것은 무엇인가요?",
    "area": "동향",
-   "status": "pending",
-   "post": null
+   "status": "done",
+   "post": "local-government-policy-watch-nov-2"
   },
   {
    "id": "s02",
    "type": "howto",
    "question": "공공 연구기관의 특허를 기술이전받으려면 어떤 절차를 거치나요?",
    "area": "스마트 농업",
-   "status": "pending",
-   "post": null
+   "status": "done",
+   "post": "public-research-patent-licensing-steps"
   },
   {
    "id": "t06",
    "type": "guide",
    "question": "사전타당성 조사 용역을 맡기기 전에 무엇을 준비해야 하나요?",
    "area": "산업 컨설팅",
-   "status": "pending",
-   "post": null
+   "status": "done",
+   "post": "pre-feasibility-study-preparation"
   },
   {
    "id": "t07",
    "type": "define",
    "question": "핵심 특허 확보 전략(IP-R&D)이란 무엇인가요?",
    "area": "기술·특허 분석",
-   "status": "pending",
-   "post": null
+   "status": "done",
+   "post": "ip-rnd-patent-strategy"
   },
   {
    "id": "t08",
    "type": "howto",
    "question": "산업 입지분석은 어떤 기준으로 하나요?",
    "area": "산업 컨설팅",
-   "status": "pending",
-   "post": null
+   "status": "done",
+   "post": "industrial-site-analysis-criteria"
   },
   {
    "id": "s03",
