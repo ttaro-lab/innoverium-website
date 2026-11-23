@@ -126,8 +126,8 @@
    "type": "define",
    "question": "바이오 항공유(SAF)란 무엇이고 국내 기술 수준은 어떤가요?",
    "area": "에너지",
-   "status": "pending",
-   "post": null
+   "status": "done",
+   "post": "sustainable-aviation-fuel-saf"
   },
   {
    "id": "t13",
