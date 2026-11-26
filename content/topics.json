@@ -102,8 +102,8 @@
    "type": "case",
    "question": "산림 분야 신규 R&D 사업 기획은 어떻게 진행됐나요?",
    "area": "산림·수목원 R&D",
-   "status": "pending",
-   "post": null
+   "status": "done",
+   "post": "forest-rnd-new-program-planning"
   },
   {
    "id": "t11",
